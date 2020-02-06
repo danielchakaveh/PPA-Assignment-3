@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Cat here.
+ * Class Tiger - Represents a tiger in the simulation
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Obed Ngigi, Daniel Chakaveh-Roberts
+ * @version 1.0
  */
 public class Tiger extends Animal
 {
