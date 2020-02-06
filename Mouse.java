@@ -1,3 +1,4 @@
+import java.util.List;
 
 /**
  * Write a description of class Mouse here.
@@ -7,27 +8,22 @@
  */
 public class Mouse extends Animal
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
     /**
      * Constructor for objects of class Mouse
      */
-    public Mouse()
+    public Mouse(Field field, Location location)
     {
-        // initialise instance variables
-        x = 0;
+        super(field, location);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public void act(List<Animal> animals)
     {
-        // put your code here
-        return x + y;
+        
+    }
+    
+    public int getTrophicLevel()
+    {
+        return 5;
     }
 }
