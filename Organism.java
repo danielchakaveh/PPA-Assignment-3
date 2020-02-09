@@ -2,7 +2,7 @@
 /**
  * A class representing all living things
  *
- * @author Obid Ngigi, Daniel Chakaveh-Roberts, Guneek Deol
+ * @author Obed Ngigi, Daniel Chakaveh-Roberts
  * @version 1.0
  */
 public abstract class Organism
