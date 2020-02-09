@@ -67,6 +67,11 @@ public class Rabbit extends Animal
         }
     }
 
+    public int getTrophicLevel()
+    {
+        return 3;
+    }
+
     /**
      * Increase the age.
      * This could result in the rabbit's death.
