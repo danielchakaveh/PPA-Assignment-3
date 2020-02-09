@@ -1,3 +1,4 @@
+import java.util.List;
 
 /**
  * Class Tiger - Represents a tiger in the simulation
@@ -7,5 +8,21 @@
  */
 public class Tiger extends Animal
 {
+    /**
+     * Constructor for objects of class Mouse
+     */
+    public Tiger(Field field, Location location)
+    {
+        super(field, location);
+    }
+
+    public void act(List<Animal> animals)
+    {
+        
+    }
     
+    public int getTrophicLevel()
+    {
+        return 5;
+    }
 }
