@@ -1,33 +1,26 @@
+import java.util.List;
 
 /**
- * Write a description of class Plant here.
+ * Class Plant - Represents a plant in the simulation
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Obed Ngigi, Daniel Chakaveh-Roberts
+ * @version 1.0
  */
 public class Plant extends Organism
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class Plant
      */
-    public Plant()
+    public Plant(Field field, Location location)
     {
-        // initialise instance variables
-        x = 0;
+        super(field, location);
+        // Location variable refers to 
+        // the set location of animals species
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+        public int getTrophicLevel()
     {
-        // put your code here
-        return x + y;
+        return 1;
     }
+    
 }
