@@ -54,11 +54,6 @@ public class Fox extends Animal
         }
     }
     
-    public int getTrophicLevel()
-    {
-        return 5;
-    }
-    
     /**
      * This is what the fox does most of the time: it hunts for
      * rabbits. In the process, it might breed, die of hunger,
@@ -87,6 +82,11 @@ public class Fox extends Animal
                 setDead();
             }
         }
+    }
+    
+    public int getTrophicLevel()
+    {
+        return 4;
     }
 
     /**
