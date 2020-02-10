@@ -84,7 +84,7 @@ public class Field
      * @param location Where in the field.
      * @return The animal at the given location, or null if there is none.
      */
-    public Object getObjectAt(Location location)
+    public Organism getObjectAt(Location location)
     {
         return getObjectAt(location.getRow(), location.getCol());
     }
@@ -95,9 +95,15 @@ public class Field
      * @param col The desired column.
      * @return The animal at the given location, or null if there is none.
      */
-    public Object getObjectAt(int row, int col)
+    public Organism getObjectAt(int row, int col)
     {
-        return field[row][col];
+        if(field[row][col] == null)
+        {
+            return null;
+        }
+        else{
+            return (Organism)field[row][col];
+        }
     }
     
     /**
