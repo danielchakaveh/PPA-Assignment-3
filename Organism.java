@@ -1,4 +1,3 @@
-
 /**
  * A class representing all living things
  *
@@ -13,7 +12,8 @@ public abstract class Organism
     private Field field;
     // The animal's position in the field.
     private Location location;
-
+    
+    private int trophicLevel;
     /**
      * Create a new animal at location in field.
      * 
@@ -21,11 +21,12 @@ public abstract class Organism
      * @param location The location within the field.
      * @param trophicLevel The animals position in the food chain
      */
-    public Organism(Field field, Location location)
+    public Organism(Field field, Location location, int trophicLevel)
     {
         alive = true;
         this.field = field;
         setLocation(location);
+        this.trophicLevel = trophicLevel;
     }
     
     /**
@@ -40,7 +41,11 @@ public abstract class Organism
      * Returns the animals position in the food heirarchy.
      * Animals can eat other animals that are 1 position below them.
      */
-    abstract public int getTrophicLevel();
+    final public int getTrophicLevel()
+    {
+        return trophicLevel;
+    }
+    
 
     /**
      * Check whether the animal is alive or not.
