@@ -21,9 +21,4 @@ public class Mouse extends Animal
     {
         
     }
-    
-    public int getTrophicLevel()
-    {
-        return 2;
-    }
 }

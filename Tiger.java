@@ -11,18 +11,13 @@ public class Tiger extends Animal
     /**
      * Constructor for objects of class Mouse
      */
-    public Tiger(Field field, Location location)
+    public Tiger(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
+        super(false, field, location, 900, 30,0.12, 4, 5);
     }
 
-    public void act(List<Animal> animals)
+    public Tiger returnOffspring(Field field, Location location)
     {
-        
-    }
-    
-    public int getTrophicLevel()
-    {
-        return 5;
+        return new Tiger(false, field, location);
     }
 }

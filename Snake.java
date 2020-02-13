@@ -11,18 +11,14 @@ public class Snake extends Animal
     /**
      * Constructor for objects of class Snake
      */
-    public Snake(Field field, Location location)
+    public Snake(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
+        super(randomAge, field, location, 450, 20, 0.05, 11, 4);
     }
 
-    public void act(List<Animal> animals)
+    @Override
+    public Snake returnOffspring(Field field, Location location)
     {
-        
-    }
-    
-    public int getTrophicLevel()
-    {
-        return 4;
+        return new Snake(false, field, location);
     }
 }
