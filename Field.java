@@ -32,7 +32,8 @@ public class Field
         this.width = width;
         field = new Object[depth][width];
     }
-    
+
+
     /**
      * Empty the field.
      */
