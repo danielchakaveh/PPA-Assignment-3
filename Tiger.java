@@ -9,13 +9,25 @@ import java.util.List;
 public class Tiger extends Animal
 {
     /**
-     * Constructor for objects of class Mouse
+     * Create a tiger. A tiger can be created as a new born (age zero
+     * and not hungry) or with a random age and food level.
+     *
+     * @param randomAge If true, the tiger will have random age and hunger level.
+     * @param field The field currently occupied.
+     * @param location The location within the field.
      */
     public Tiger(boolean randomAge, Field field, Location location)
     {
         super(false, field, location, 900, 30,0.12, 4, 5);
     }
 
+    /**
+     * Creates a baby tiger with age 0
+     *
+     * @param field The grid for the tiger to be placed on
+     * @param location  The position of the tiger on the grid
+     * @return A baby tiger
+     */
     public Tiger returnOffspring(Field field, Location location)
     {
         return new Tiger(false, field, location);
