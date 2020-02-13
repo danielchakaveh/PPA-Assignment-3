@@ -185,6 +185,6 @@ public abstract class Animal extends Organism
      */
     private boolean canEat(Organism organism)
     {
-        return (getTrophicLevel() - organism.getTrophicLevel() == 1 );
+        return (getTrophicLevel() - organism.getTrophicLevel()) == 1 ;
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Tiger extends Animal
 {
+    public static double creationProbability = 0.001;
     /**
      * Create a tiger. A tiger can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

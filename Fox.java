@@ -11,6 +11,7 @@ import java.util.Random;
  */
 public class Fox extends Animal
 {
+    public static double creationProbability = 0.03;
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

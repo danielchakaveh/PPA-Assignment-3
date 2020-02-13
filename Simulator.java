@@ -13,15 +13,24 @@ import java.awt.Color;
  */
 public class Simulator
 {
+    public static void main(String[] args)
+    {
+        Simulator simulator = new Simulator();
+
+        simulator.runLongSimulation();
+    }
+
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
+    /*
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.02;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
+    private static final double RABBIT_CREATION_PROBABILITY = 0.08;
+    */
 
     // List of animals in the field.
     private List<Animal> animals;
@@ -59,9 +68,13 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
-        view.setColor(Fox.class, Color.BLUE);
-        
+        view.setColor(Rabbit.class, Color.gray);
+        view.setColor(Fox.class, Color.red);
+        view.setColor(Snake.class, Color.GREEN);
+        view.setColor(Tiger.class, Color.ORANGE);
+        view.setColor(Mouse.class, Color.black);
+        view.setColor(Plant.class, Color.yellow);
+
         // Setup a valid starting point.
         reset();
     }
@@ -97,7 +110,7 @@ public class Simulator
     {
         step++;
 
-        // Provide space for newborn animals.
+        // Provide space for newborn animals.snake
         List<Animal> newAnimals = new ArrayList<>();        
         // Let all rabbits act.
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
@@ -136,16 +149,33 @@ public class Simulator
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
+                if(rand.nextDouble() <= Mouse.creationProbability)
+                {
                     Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
+                    Mouse mouse = new Mouse(true, field, location);
+                    animals.add(mouse);
                 }
-                else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
+                if(rand.nextDouble() <= Rabbit.creationProbability) {
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
                     animals.add(rabbit);
                 }
+                else if(rand.nextDouble() <= Fox.creationProbability) {
+                    Location location = new Location(row, col);
+                    Fox fox = new Fox(true, field, location);
+                    animals.add(fox);
+                }
+                else if(rand.nextDouble() <= Snake.creationProbability) {
+                    Location location = new Location(row, col);
+                    Snake snake = new Snake(true, field, location);
+                    animals.add(snake);
+                }
+                else if(rand.nextDouble() <= Tiger.creationProbability) {
+                    Location location = new Location(row, col);
+                    Tiger tiger = new Tiger(true, field, location);
+                    animals.add(tiger);
+                }
+
                 // else leave the location empty.
             }
         }

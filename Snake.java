@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Snake extends Animal
 {
+    public static double creationProbability = 0.03;
     /**
      * Create a snake. A snake can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

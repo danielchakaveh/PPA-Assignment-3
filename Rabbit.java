@@ -10,6 +10,7 @@ import java.util.Random;
  */
 public class Rabbit extends Animal
 {
+    public static double creationProbability = 0.09;
     /**
      * Create a new rabbit. A rabbit may be created with age
      * zero (a new born) or with a random age.
