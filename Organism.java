@@ -101,6 +101,39 @@ public abstract class Organism
     }
 
     /**
+     * Check whether or not this animal is to give birth at this step.
+     * New births will be made into free adjacent locations.
+     * @param newOrganism A list to return newly born foxes.
+     */
+    protected void giveBirth(List<Organism> newOrganism)
+    {
+        // New foxes are born into adjacent locations.
+        // Get a list of adjacent free locations.
+        Field field = getField();
+        List<Location> free = field.getFreeAdjacentLocations(getLocation());
+        int births = breed();
+        for(int b = 0; b < births && free.size() > 0; b++) {
+            Location loc = free.remove(0);
+            Organism young = returnOffspring(field, loc);
+            newOrganism.add(young);
+        }
+    }
+
+    /**
+     * Calculates the number of births for an  organism to have
+     * @return Number of births for an organism to have
+     */
+    protected abstract int breed();
+
+    /**
+     * Returns an offspring of the animal
+     * @param field The grid for the animal to be placed on
+     * @param location  The position of the animal on the grid
+     * @return New instance of specific animal
+     */
+    protected abstract Organism returnOffspring(Field field, Location location);
+
+    /**
      * Return the animal's field.
      * @return The animal's field.
      */

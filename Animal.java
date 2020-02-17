@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.util.List;
 import java.util.Iterator;
 import java.util.Random;
@@ -20,11 +22,11 @@ public abstract class Animal extends Organism
     private int breedingAge;
     // Minimum maturity age to reproduce.
     private double breedingProbability;
-    // A shared random number generator to control breeding.
     private int maxLitterSize;
     // Maximum number of offspring in a single pregnancy.
 
     private static final Random rand = Randomizer.getRandom();
+    // A shared random number generator to control breeding.
 
     /**
      * Create a new animal at location in field.
@@ -59,7 +61,6 @@ public abstract class Animal extends Organism
      */
     public void act(List<Organism> newOrganisms)
     {
-
         incrementAge();
         incrementHunger();
         if(isAlive()) {
@@ -106,33 +107,6 @@ public abstract class Animal extends Organism
         return null;
     }
 
-    /**
-     * Check whether or not this animal is to give birth at this step.
-     * New births will be made into free adjacent locations.
-     * @param newOrganism A list to return newly born foxes.
-     */
-    private void giveBirth(List<Organism> newOrganism)
-    {
-        // New foxes are born into adjacent locations.
-        // Get a list of adjacent free locations.
-        Field field = getField();
-        List<Location> free = field.getFreeAdjacentLocations(getLocation());
-        int births = breed();
-        for(int b = 0; b < births && free.size() > 0; b++) {
-            Location loc = free.remove(0);
-            Animal young = returnOffspring(field, loc);
-            newOrganism.add(young);
-        }
-    }
-
-    /**
-     * Returns an offspring of the animal
-     * @param field The grid for the animal to be placed on
-     * @param location  The position of the animal on the grid
-     * @return New instance of specific animal
-     */
-    protected abstract Animal returnOffspring(Field field, Location location);
-
     private void incrementAge()
     {
         age++;
@@ -165,7 +139,7 @@ public abstract class Animal extends Organism
      * if it can breed.
      * @return The number of births (may be zero).
      */
-    private int breed()
+    protected int breed()
     {
         int births = 0;
         if(canBreed() && rand.nextDouble() <= breedingProbability) {

@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 /**
  * Class Plant - Represents a plant in the simulation
@@ -9,6 +10,7 @@ import java.util.List;
 public class Plant extends Organism
 {
     public static double creationProbability = 0.1;
+    private static final Random rand = Randomizer.getRandom();
 
     /**
      * Constructor for objects of class Plant
@@ -19,25 +21,37 @@ public class Plant extends Organism
         // the set location of animals species
     }
 
+    /**
+     *
+     * @param newOrganisms A list to receive newly born animals.
+     */
 	@Override
     public void act(List<Organism> newOrganisms)
+    {
 		if(isAlive()) {
-            giveBirth(newOrganisms);
-            // Move towards a source of food if found.
-            Location newLocation = findFood();
-            if(newLocation == null) {
-                // No food found - try to move to a free location.
-                newLocation = getField().freeAdjacentLocation(getLocation());
-            }
-            // See if it was possible to move.
-            if(newLocation != null) {
-                setLocation(newLocation);
-            }
-            else {
-                // Overcrowding.
-                setDead();/////
-            }
+		    giveBirth(newOrganisms);
 		}
-
 	}
+
+    @Override
+    protected int breed() {
+        int maxNewPlants = 5;
+        double breedingProbability = 0.3;
+        if(rand.nextDouble() <= breedingProbability)
+        {
+            return rand.nextInt(5);
+        }
+    }
+
+    /**
+     *
+     * @param field The grid for the animal to be placed on
+     * @param location  The position of the animal on the grid
+     * @return A new basic plant
+     */
+    @Override
+    protected Organism returnOffspring(Field field, Location location) {
+        return new Plant(field, location);
+    }
+
 }
