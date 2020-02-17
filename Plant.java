@@ -22,7 +22,7 @@ public class Plant extends Organism
     }
 
     /**
-     *
+     *  May give birth or may not
      * @param newOrganisms A list to receive newly born animals.
      */
 	@Override
@@ -33,10 +33,14 @@ public class Plant extends Organism
 		}
 	}
 
+    /**
+     * Calculates how many births for the plant to have
+     * @return number of births for plant to have
+     */
     @Override
     protected int breed() {
-        int maxNewPlants = 5;
-        double breedingProbability = 0.3;
+        int maxNewPlants = 3;
+        double breedingProbability = 0.1;
         if(rand.nextDouble() <= breedingProbability)
         {
             return rand.nextInt(5) + 1;
