@@ -39,7 +39,10 @@ public class Plant extends Organism
         double breedingProbability = 0.3;
         if(rand.nextDouble() <= breedingProbability)
         {
-            return rand.nextInt(5);
+            return rand.nextInt(5) + 1;
+        }
+        else{
+            return 0;
         }
     }
 
