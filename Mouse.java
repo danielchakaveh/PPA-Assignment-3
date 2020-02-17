@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Mouse extends Animal
 {
-    public static double creationProbability = 0.14;
+    public static double creationProbability = 0.05;
     /**
      * Create a Rabbit. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -18,7 +18,7 @@ public class Mouse extends Animal
      * @param location The location within the field.
      */
     public Mouse(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 140, 1, 0.2, 7, 2);
+        super(randomAge, field, location, 140, 2, 0.3, 7, 2);
     }
 
     @Override

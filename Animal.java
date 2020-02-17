@@ -81,8 +81,8 @@ public abstract class Animal extends Organism
     }
 
     /**
-     * Look for rabbits adjacent to the current location.
-     * Only the first live rabbit is eaten.
+     * Look for preys adjacent to the current location.
+     * Only the first live prey is eaten.
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood()
@@ -96,7 +96,7 @@ public abstract class Animal extends Organism
             if(!(organism == null) && canEat(organism)) {
                 if(organism.isAlive()) { 
                     organism.setDead();
-                    foodLevel = organism.getFoodValue();
+                    foodLevel += organism.getFoodValue();
                     return where;
                 }
             }

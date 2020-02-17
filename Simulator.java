@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.Color;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A simple predator-prey simulator, based on a rectangular field
@@ -83,8 +84,7 @@ public class Simulator
      * Run the simulation from its current state for a reasonably long period,
      * (4000 steps).
      */
-    public void runLongSimulation()
-    {
+    public void runLongSimulation(){
         simulate(4000);
     }
     
@@ -93,12 +93,10 @@ public class Simulator
      * Stop before the given number of steps if it ceases to be viable.
      * @param numSteps The number of steps to run for.
      */
-    public void simulate(int numSteps)
-    {
+    public void simulate(int numSteps){
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-
-            // delay(60);   // uncomment this to run more slowly
+            delay(60);   // uncomment this to run more slowly
         }
     }
     

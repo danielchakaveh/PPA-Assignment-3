@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class Fox extends Animal
 {
-    public static double creationProbability = 0.03;
+    public static double creationProbability = 0.06;
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -21,7 +21,7 @@ public class Fox extends Animal
      * @param location The location within the field.
      */
     public Fox(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 150, 15, 0.08, 2, 4);
+        super(randomAge, field, location, 150, 13, 0.14, 7, 4);
     }
 
     @Override

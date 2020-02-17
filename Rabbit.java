@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Rabbit extends Animal
 {
-    public static double creationProbability = 0.09;
+    public static double creationProbability = 0.1;
     /**
      * Create a new rabbit. A rabbit may be created with age
      * zero (a new born) or with a random age.
@@ -20,7 +20,7 @@ public class Rabbit extends Animal
      * @param location The location within the field.
      */
     public Rabbit(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 75, 8, 0.4, 3, 3);
+        super(randomAge, field, location, 75, 8, 0.25, 3, 3);
     }
         @Override
         protected Animal returnOffspring(Field field, Location location) {
