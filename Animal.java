@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * A class representing shared characteristics of animals.
@@ -54,14 +55,15 @@ public abstract class Animal extends Organism
     /**
      * Make this animal act - that is: make it do
      * whatever it wants/needs to do.
-     * @param newAnimals A list to receive newly born animals.
+     * @param newOrganisms A list to receive newly born animals.
      */
-    public void act(List<Animal> newAnimals)
+    public void act(List<Organism> newOrganisms)
     {
+
         incrementAge();
         incrementHunger();
         if(isAlive()) {
-            giveBirth(newAnimals);
+            giveBirth(newOrganisms);
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) {
@@ -105,11 +107,11 @@ public abstract class Animal extends Organism
     }
 
     /**
-     * Check whether or not this fox is to give birth at this step.
+     * Check whether or not this animal is to give birth at this step.
      * New births will be made into free adjacent locations.
-     * @param newAnimals A list to return newly born foxes.
+     * @param newOrganism A list to return newly born foxes.
      */
-    private void giveBirth(List<Animal> newAnimals)
+    private void giveBirth(List<Organism> newOrganism)
     {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
@@ -119,7 +121,7 @@ public abstract class Animal extends Organism
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
             Animal young = returnOffspring(field, loc);
-            newAnimals.add(young);
+            newOrganism.add(young);
         }
     }
 

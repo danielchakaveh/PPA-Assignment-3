@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * A class representing all living things
  *
@@ -45,7 +47,6 @@ public abstract class Organism
     {
         return trophicLevel;
     }
-    
 
     /**
      * Check whether the animal is alive or not.
@@ -55,6 +56,13 @@ public abstract class Organism
     {
         return alive;
     }
+
+    /**
+     * Make this organism act - that is: make it do
+     * whatever it wants/needs to do.
+     * @param newOrganisms A list to receive newly born animals.
+     */
+    public abstract void act(List<Organism> newOrganisms);
 
     /**
      * Indicate that the animal is no longer alive.

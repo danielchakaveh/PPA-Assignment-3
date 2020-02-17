@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class Plant extends Organism
 {
+    public static double creationProbability = 0.1;
+
     /**
      * Constructor for objects of class Plant
      */

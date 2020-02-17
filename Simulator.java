@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.Color;
-import java.util.concurrent.TimeUnit;
 
 /**
  * A simple predator-prey simulator, based on a rectangular field
@@ -34,7 +33,7 @@ public class Simulator
     */
 
     // List of animals in the field.
-    private List<Animal> animals;
+    private List<Organism> organisms;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
@@ -64,7 +63,7 @@ public class Simulator
             width = DEFAULT_WIDTH;
         }
         
-        animals = new ArrayList<>();
+        organisms = new ArrayList<>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
@@ -110,18 +109,18 @@ public class Simulator
         step++;
 
         // Provide space for newborn animals.snake
-        List<Animal> newAnimals = new ArrayList<>();        
+        List<Organism> newAnimals = new ArrayList<>();
         // Let all rabbits act.
-        for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
-            Animal animal = it.next();
-            animal.act(newAnimals);
-            if(! animal.isAlive()) {
+        for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
+            Organism organism = it.next();
+            organism.act(newAnimals);
+            if(! organism.isAlive()) {
                 it.remove();
             }
         }
                
         // Add the newly born foxes and rabbits to the main lists.
-        animals.addAll(newAnimals);
+        organisms.addAll(newAnimals);
 
         view.showStatus(step, field);
     }
@@ -132,7 +131,7 @@ public class Simulator
     public void reset()
     {
         step = 0;
-        animals.clear();
+        organisms.clear();
         populate();
         
         // Show the starting state in the view.
@@ -152,29 +151,33 @@ public class Simulator
                 {
                     Location location = new Location(row, col);
                     Mouse mouse = new Mouse(true, field, location);
-                    animals.add(mouse);
+                    organisms.add(mouse);
                 }
                 if(rand.nextDouble() <= Rabbit.creationProbability) {
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit);
+                    organisms.add(rabbit);
                 }
                 else if(rand.nextDouble() <= Fox.creationProbability) {
                     Location location = new Location(row, col);
                     Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
+                    organisms.add(fox);
                 }
                 else if(rand.nextDouble() <= Snake.creationProbability) {
                     Location location = new Location(row, col);
                     Snake snake = new Snake(true, field, location);
-                    animals.add(snake);
+                    organisms.add(snake);
                 }
                 else if(rand.nextDouble() <= Tiger.creationProbability) {
                     Location location = new Location(row, col);
                     Tiger tiger = new Tiger(true, field, location);
-                    animals.add(tiger);
+                    organisms.add(tiger);
                 }
-
+                else if(rand.nextDouble() <= Plant.creationProbability) {
+                    Location location = new Location(row, col);
+                    Plant plant = new Plant(field, location);
+                    organisms.add(plant);
+                }
                 // else leave the location empty.
             }
         }
