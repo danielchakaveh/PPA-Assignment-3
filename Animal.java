@@ -21,7 +21,7 @@ public abstract class Animal extends Organism
     private double breedingProbability;
     // A shared random number generator to control breeding.
     private int maxLitterSize;
-    // Maximum number of offpring in a single pregnancy.
+    // Maximum number of offspring in a single pregnancy.
 
     private static final Random rand = Randomizer.getRandom();
 
@@ -93,7 +93,7 @@ public abstract class Animal extends Organism
         while(it.hasNext()) {
             Location where = it.next();
             Organism organism = field.getObjectAt(where);
-            if(canEat(organism)) {
+            if(!(organism == null) && canEat(organism)) {
                 if(organism.isAlive()) { 
                     organism.setDead();
                     foodLevel = organism.getFoodValue();
