@@ -16,23 +16,30 @@ public abstract class Animal extends Organism
     private int age;
     // Age of the animal organism.
     private int maxAge;
-    // The fox's food level, which is increased by eating rabbits.
+    // The animal's food level, which is increased by eating rabbits.
     private int foodLevel;
-
+    // The age at which the animal can first breed
     private int breedingAge;
     // Minimum maturity age to reproduce.
     private double breedingProbability;
-    private int maxLitterSize;
     // Maximum number of offspring in a single pregnancy.
+    private int maxLitterSize;
+    // The gender of the animal
+    private Gender gender;
 
     private static final Random rand = Randomizer.getRandom();
     // A shared random number generator to control breeding.
 
     /**
      * Create a new animal at location in field.
-     * 
+     *
+     * @param randomAge True if you want the animal to be given a random age
      * @param field The field currently occupied.
      * @param location The location within the field.
+     * @param maxAge The age in steps at which the animal dies
+     * @param breedingAge The age in steps at which the animal can start breeding
+     * @param breedingProbability The probability (as a decimal) of the animal breeding at any step
+     * @param maxLitterSize The most births the animal can have at once
      * @param trophicLevel The animals position in the food chain
      */
     public Animal(boolean randomAge, Field field, Location location, int maxAge,
@@ -43,6 +50,8 @@ public abstract class Animal extends Organism
         this.breedingAge = breedingAge;
         this.breedingProbability = breedingProbability;
         this.maxLitterSize = maxLitterSize;
+        gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
+        // Animal has a 50% chance of being male or female
 
         if(randomAge) {
             age = rand.nextInt(maxAge);
@@ -52,6 +61,15 @@ public abstract class Animal extends Organism
             age = 0;
             foodLevel = getFoodValue() - 4;
         }
+    }
+
+    /**
+     * Returns the animals gender
+     * @return  The gender of the animal
+     */
+    public Gender getGender()
+    {
+        return gender;
     }
 
     /**
