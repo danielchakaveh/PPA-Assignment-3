@@ -50,6 +50,7 @@ public abstract class Animal extends Organism
         this.breedingAge = breedingAge;
         this.breedingProbability = breedingProbability;
         this.maxLitterSize = maxLitterSize;
+
         gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
         // Animal has a 50% chance of being male or female
 
@@ -171,14 +172,36 @@ public abstract class Animal extends Organism
      */
     private boolean canBreed()
     {
-        return age >= breedingAge;
+        /*
+        boolean mateNearby = false;
+        for (Location adjacentLocation : getField().adjacentLocations(getLocation())) {
+            if(adjacentLocation != null)
+            {
+                if(getField().getObjectAt(adjacentLocation).getClass() == getClass())
+                {
+                    if(((Animal)getField().getObjectAt(adjacentLocation)).getGender() != getGender())
+                    {
+                        mateNearby = true;
+                    }
+                }
+            }
+        }
+        boolean mateNearby = false;
+        */
+        boolean mateNearby = getField().adjacentLocations(getLocation()).stream().anyMatch(
+                location -> (getField().getObjectAt(location) != null    // prevent NullPointerException
+                && getField().getObjectAt(location).getClass() == this.getClass()  //If space contains animal of same type
+                && ((Animal)getField().getObjectAt(location)).gender != getGender())     // And both are opposite species
+        );
+        return age >= breedingAge && mateNearby;
     }
 
     /**
-     * 
+     * Organisms can eat organisms with trophic levels 1 or 2 below it.
      */
     private boolean canEat(Organism organism)
     {
-        return (getTrophicLevel() - organism.getTrophicLevel()) == 1 ;
+        return getTrophicLevel() - organism.getTrophicLevel() == 1 ||
+                getTrophicLevel() - organism.getTrophicLevel() == 2;
     }
 }

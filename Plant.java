@@ -40,7 +40,7 @@ public class Plant extends Organism
     @Override
     protected int breed() {
         int maxNewPlants = 3;
-        double breedingProbability = 0.1;
+        double breedingProbability = 0.05;
         if(rand.nextDouble() <= breedingProbability)
         {
             return rand.nextInt(5) + 1;

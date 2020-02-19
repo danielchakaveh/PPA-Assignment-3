@@ -101,7 +101,8 @@ public abstract class Organism
     }
 
     /**
-     * Check whether or not this animal is to give birth at this step.
+     * Check whether or not this organism is to give birth at this step.
+     * If so, new instances of that organism are put into adjacent locations.
      * New births will be made into free adjacent locations.
      * @param newOrganism A list to return newly born foxes.
      */
