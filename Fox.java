@@ -21,7 +21,7 @@ public class Fox extends Animal
      * @param location The location within the field.
      */
     public Fox(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 50, 13, 0.1, 3, 4);
+        super(randomAge, field, location, 50, 13, 0.1, 3, 4, 0.2);
     }
 
     /**

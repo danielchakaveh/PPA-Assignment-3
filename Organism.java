@@ -61,8 +61,10 @@ public abstract class Organism
      * Make this organism act - that is: make it do
      * whatever it wants/needs to do.
      * @param newOrganisms A list to receive newly born animals.
+     * @param weather The weather at the time of acting
+     * @param isDayTime True if the current time is day time
      */
-    public abstract void act(List<Organism> newOrganisms);
+    public abstract void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime);
 
     /**
      * Indicate that the animal is no longer alive.

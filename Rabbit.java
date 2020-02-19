@@ -20,7 +20,7 @@ public class Rabbit extends Animal
      * @param location The location within the field.
      */
     public Rabbit(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 75, 5, 0.7, 5, 3);
+        super(randomAge, field, location, 75, 5, 0.7, 5, 3, 0.2);
     }
         @Override
         protected Animal returnOffspring(Field field, Location location) {

@@ -1,9 +1,6 @@
-import com.sun.org.apache.xpath.internal.operations.Or;
-
 import java.util.List;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * A class representing shared characteristics of animals.
@@ -26,6 +23,8 @@ public abstract class Animal extends Organism
     private int maxLitterSize;
     // The gender of the animal
     private Gender gender;
+    // The chance of animal dying due to snow at any time
+    private double chanceOfDeathInSnow;
 
     private static final Random rand = Randomizer.getRandom();
     // A shared random number generator to control breeding.
@@ -41,15 +40,17 @@ public abstract class Animal extends Organism
      * @param breedingProbability The probability (as a decimal) of the animal breeding at any step
      * @param maxLitterSize The most births the animal can have at once
      * @param trophicLevel The animals position in the food chain
+     * @param chanceOfDeathInSnow The chance of animal dying due to snow at any time
      */
     public Animal(boolean randomAge, Field field, Location location, int maxAge,
-    int breedingAge, double breedingProbability, int maxLitterSize, int trophicLevel)
+    int breedingAge, double breedingProbability, int maxLitterSize, int trophicLevel, double chanceOfDeathInSnow)
     {
         super(field, location, trophicLevel);
         this.maxAge = maxAge;
         this.breedingAge = breedingAge;
         this.breedingProbability = breedingProbability;
         this.maxLitterSize = maxLitterSize;
+        this.chanceOfDeathInSnow = chanceOfDeathInSnow;
 
         gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
         // Animal has a 50% chance of being male or female
@@ -77,12 +78,19 @@ public abstract class Animal extends Organism
      * Make this animal act - that is: make it do
      * whatever it wants/needs to do.
      * @param newOrganisms A list to receive newly born animals.
+     * @param weather
+     * @param isDayTime
      */
-    public void act(List<Organism> newOrganisms)
+    public void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime)
     {
         incrementAge();
         incrementHunger();
-        if(isAlive()) {
+        if(isAlive() && isDayTime) {
+            if(weather == Weather.SNOWY)
+            {
+                mayDieFromSnow();
+            }
+
             giveBirth(newOrganisms);
             // Move towards a source of food if found.
             Location newLocation = findFood();
@@ -100,6 +108,17 @@ public abstract class Animal extends Organism
             }
         }
 
+    }
+
+    /**
+     * Sets the animal as dead based off chanceOfDeathInSnow field
+     */
+    private void mayDieFromSnow()
+    {
+        if(rand.nextDouble() <= chanceOfDeathInSnow)
+        {
+            setDead();
+        }
     }
 
     /**

@@ -18,7 +18,7 @@ public class Mouse extends Animal
      * @param location The location within the field.
      */
     public Mouse(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 140, 1, 0.55, 14, 2);
+        super(randomAge, field, location, 140, 1, 0.75, 8, 2, 0.4);
     }
 
     /**

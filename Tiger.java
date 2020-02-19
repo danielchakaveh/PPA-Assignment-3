@@ -19,7 +19,7 @@ public class Tiger extends Animal
      */
     public Tiger(boolean randomAge, Field field, Location location)
     {
-        super(false, field, location, 900, 16,0.05, 3, 5);
+        super(false, field, location, 900, 16,0.05, 3, 5, 0.03);
     }
 
     public boolean canEat(Organism organism)

@@ -40,7 +40,11 @@ public class Simulator
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
-    
+    // The current weather in the simulation
+    private Weather weather;
+    // Randomizer to allow for randomness in simulation
+    Random rand = Randomizer.getRandom();
+
     /**
      * Construct a simulation field with default size.
      */
@@ -68,15 +72,24 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.gray);
-        view.setColor(Fox.class, Color.red);
+        view.setColor(Rabbit.class, Color.GRAY);
+        view.setColor(Fox.class, Color.RED);
         view.setColor(Snake.class, Color.GREEN);
         view.setColor(Tiger.class, Color.ORANGE);
-        view.setColor(Mouse.class, Color.black);
-        view.setColor(Plant.class, Color.yellow);
+        view.setColor(Mouse.class, Color.BLACK);
+        view.setColor(Plant.class, Color.YELLOW);
 
         // Setup a valid starting point.
         reset();
+    }
+
+    /**
+     * Assigns a random weather to the simulator weather
+     */
+    private void setRandomWeather()
+    {
+        int weatherID = rand.nextInt(Weather.values().length);
+        weather = Weather.values()[weatherID];
     }
     
     /**
@@ -111,16 +124,20 @@ public class Simulator
         // Provide space for newborn animals.snake
         List<Organism> newAnimals = new ArrayList<>();
         // Let all rabbits act.
-	if(getCurrentHour() >= 20 || getCurrentHour() <= 6) {
-        for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
-            Organism organism = it.next();
-            organism.act(newAnimals);
-            if(! organism.isAlive()) {
-                it.remove();
+	    if(getCurrentHour() >= 20 || getCurrentHour() <= 6) {
+            for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
+                Organism organism = it.next();
+                organism.act(newAnimals, weather, );
+                if(! organism.isAlive()) {
+                    it.remove();
+                }
             }
-        }
-	}
-    
+	    }
+        // Add the newly born foxes and rabbits to the main lists.
+        organisms.addAll(newAnimals);
+        view.showStatus(step, field);
+    }
+
 	/**
 	 * Calculate the current day.
 	 */
@@ -147,13 +164,7 @@ public class Simulator
 		int timeMinute = (step % 3) * 20;
 		return timeMinute;
 	}
-           
-        // Add the newly born foxes and rabbits to the main lists.
-        organisms.addAll(newAnimals);
 
-        view.showStatus(step, field);
-    }
-        
     /**
      * Reset the simulation to a starting position.
      */
@@ -161,8 +172,9 @@ public class Simulator
     {
         step = 0;
         organisms.clear();
+        setRandomWeather();
         populate();
-        
+
         // Show the starting state in the view.
         view.showStatus(step, field);
     }
@@ -172,7 +184,6 @@ public class Simulator
      */
     private void populate()
     {
-        Random rand = Randomizer.getRandom();
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {

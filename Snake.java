@@ -19,7 +19,7 @@ public class Snake extends Animal
      */
     public Snake(boolean randomAge, Field field, Location location)
     {
-        super(randomAge, field, location, 450, 12, 0.01, 6, 4);
+        super(randomAge, field, location, 450, 12, 0.01, 6, 4, 0.1);
     }
 
     /**
