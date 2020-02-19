@@ -1,7 +1,6 @@
-import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.sun.deploy.util.ArrayUtil;
+
+import java.util.*;
 import java.awt.Color;
 
 /**
@@ -25,12 +24,9 @@ public class Simulator
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
-    /*
-    // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.02;
-    // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.08;
-    */
+    // The probability of weather changing at any step
+    private static final double weatherChangeProbability = 0.1;
+    // The probability of weather changing at any step
 
     // List of animals in the field.
     private List<Organism> organisms;
@@ -88,8 +84,9 @@ public class Simulator
      */
     private void setRandomWeather()
     {
-        int weatherID = rand.nextInt(Weather.values().length);
-        weather = Weather.values()[weatherID];
+        Weather[] weathers = Weather.values();
+        int weatherID = rand.nextInt(Weather.values().length - 1);
+        weather = (Weather)Arrays.stream(weathers).filter(w -> w != weather).toArray()[weatherID];
     }
     
     /**
@@ -120,6 +117,10 @@ public class Simulator
     public void simulateOneStep()
     {
         step++;
+        if(rand.nextDouble() <= weatherChangeProbability)
+        {
+            setRandomWeather();
+        }
 
         // Provide space for newborn animals.snake
         List<Organism> newAnimals = new ArrayList<>();
