@@ -1,5 +1,3 @@
-import com.sun.deploy.util.ArrayUtil;
-
 import java.util.*;
 import java.awt.Color;
 
@@ -48,7 +46,7 @@ public class Simulator
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
     }
-    
+
     /**
      * Create a simulation field with the given size.
      * @param depth Depth of the field. Must be greater than zero.
@@ -62,7 +60,7 @@ public class Simulator
             depth = DEFAULT_DEPTH;
             width = DEFAULT_WIDTH;
         }
-        
+
         organisms = new ArrayList<>();
         field = new Field(depth, width);
 
@@ -88,7 +86,7 @@ public class Simulator
         int weatherID = rand.nextInt(Weather.values().length - 1);
         weather = (Weather)Arrays.stream(weathers).filter(w -> w != weather).toArray()[weatherID];
     }
-    
+
     /**
      * Run the simulation from its current state for a reasonably long period,
      * (4000 steps).
@@ -96,7 +94,7 @@ public class Simulator
     public void runLongSimulation(){
         simulate(4000);
     }
-    
+
     /**
      * Run the simulation from its current state for the given number of steps.
      * Stop before the given number of steps if it ceases to be viable.
@@ -108,7 +106,7 @@ public class Simulator
             delay(60);   // uncomment this to run more slowly
         }
     }
-    
+
     /**
      * Run the simulation from its current state for a single step.
      * Iterate over the whole field updating the state of each
@@ -125,46 +123,59 @@ public class Simulator
         // Provide space for newborn animals.snake
         List<Organism> newAnimals = new ArrayList<>();
         // Let all rabbits act.
-	    if(getCurrentHour() >= 20 || getCurrentHour() <= 6) {
-            for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
-                Organism organism = it.next();
-                organism.act(newAnimals, weather, );
-                if(! organism.isAlive()) {
-                    it.remove();
-                }
+
+        for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
+            Organism organism = it.next();
+            organism.act(newAnimals, weather, isDayTime());
+            if(!organism.isAlive()) {
+                it.remove();
             }
-	    }
-        // Add the newly born foxes and rabbits to the main lists.
-        organisms.addAll(newAnimals);
-        view.showStatus(step, field);
+
+            // Add the newly born foxes and rabbits to the main lists.
+            organisms.addAll(newAnimals);
+            view.showStatus(step, field);
+        }
     }
 
-	/**
-	 * Calculate the current day.
-	 */
-	public int getCurrentDay()
-	{
-		int day = step / 72;
-		return day;
-	}
+    /**
+     * Calculate the current day.
+     */
+    public int getCurrentDay()
+    {
+        int day = step / 72;
+        return day;
+    }
 
-	/**
-	 * Calcualate the current hour.
-	 */
-	public int getCurrentHour()
-	{
-		int timeHour = (step / 3) % 24;
-		return timeHour;
-	}
+    /**
+     * Calcualate the current hour.
+     */
+    public int getCurrentHour()
+    {
+        int timeHour = (step / 3) % 24;
+        return timeHour;
+    }
 
-	/**
-	 * Calculate the current minute.
-	 */
-	public int getCurrentMinute()
-	{
-		int timeMinute = (step % 3) * 20;
-		return timeMinute;
-	}
+    /**
+     * Calculate the current minute.
+     */
+    public int getCurrentMinute()
+    {
+        int timeMinute = (step % 3) * 20;
+        return timeMinute;
+    }
+
+    /**
+     * 
+     */
+    public boolean isDayTime()
+    {
+        if(getCurrentHour() >= 6 || getCurrentHour() <= 20) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     /**
      * Reset the simulation to a starting position.
@@ -179,7 +190,7 @@ public class Simulator
         // Show the starting state in the view.
         view.showStatus(step, field);
     }
-    
+
     /**
      * Randomly populate the field with foxes and rabbits.
      */
@@ -223,7 +234,7 @@ public class Simulator
             }
         }
     }
-    
+
     /**
      * Pause for a given time.
      * @param millisec  The time to pause for, in milliseconds
