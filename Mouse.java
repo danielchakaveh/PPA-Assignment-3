@@ -21,6 +21,12 @@ public class Mouse extends Animal
         super(randomAge, field, location, 140, 1, 0.55, 14, 2);
     }
 
+    /**
+     * Creates a baby mouse
+     * @param field The grid for the animal to be placed on
+     * @param location  The position of the animal on the grid
+     * @return Returns a new born mouse
+     */
     @Override
     protected Animal returnOffspring(Field field, Location location) {
         return new Mouse(false, field, location);

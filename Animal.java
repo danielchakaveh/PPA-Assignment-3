@@ -126,6 +126,9 @@ public abstract class Animal extends Organism
         return null;
     }
 
+    /**
+     * Increases the animals age and if the animal reaches its maximum age, it dies
+     */
     private void incrementAge()
     {
         age++;
@@ -172,22 +175,6 @@ public abstract class Animal extends Organism
      */
     private boolean canBreed()
     {
-        /*
-        boolean mateNearby = false;
-        for (Location adjacentLocation : getField().adjacentLocations(getLocation())) {
-            if(adjacentLocation != null)
-            {
-                if(getField().getObjectAt(adjacentLocation).getClass() == getClass())
-                {
-                    if(((Animal)getField().getObjectAt(adjacentLocation)).getGender() != getGender())
-                    {
-                        mateNearby = true;
-                    }
-                }
-            }
-        }
-        boolean mateNearby = false;
-        */
         boolean mateNearby = getField().adjacentLocations(getLocation()).stream().anyMatch(
                 location -> (getField().getObjectAt(location) != null    // prevent NullPointerException
                 && getField().getObjectAt(location).getClass() == this.getClass()  //If space contains animal of same type

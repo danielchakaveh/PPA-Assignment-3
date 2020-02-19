@@ -24,6 +24,12 @@ public class Fox extends Animal
         super(randomAge, field, location, 50, 13, 0.1, 3, 4);
     }
 
+    /**
+     *
+     * @param field The grid for the animal to be placed on
+     * @param location  The position of the animal on the grid
+     * @return Returns a new born fox
+     */
     @Override
     protected Animal returnOffspring(Field field, Location location) {
         return new Fox(false, field, location);
