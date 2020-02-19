@@ -130,11 +130,12 @@ public class Simulator
             if(!organism.isAlive()) {
                 it.remove();
             }
-
-            // Add the newly born foxes and rabbits to the main lists.
-            organisms.addAll(newAnimals);
-            view.showStatus(step, field);
         }
+
+
+        // Add the newly born foxes and rabbits to the main lists.
+        organisms.addAll(newAnimals);
+        view.showStatus(step, field);
     }
 
     /**
