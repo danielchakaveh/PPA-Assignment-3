@@ -113,6 +113,7 @@ public class Simulator
         // Provide space for newborn animals.snake
         List<Animal> newAnimals = new ArrayList<>();        
         // Let all rabbits act.
+	if(getCurrentHour() >= 20 || getCurrentHour() <= 6) {
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
             Animal animal = it.next();
             animal.act(newAnimals);
@@ -120,7 +121,8 @@ public class Simulator
                 it.remove();
             }
         }
-               
+	}
+	    
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
 
