@@ -78,47 +78,44 @@ public abstract class Animal extends Organism
      * Make this animal act - that is: make it do
      * whatever it wants/needs to do.
      * @param newOrganisms A list to receive newly born animals.
-     * @param weather
-     * @param isDayTime
+     * @param weather The current weather
+     * @param isDayTime True if it is currently day time in the simulation
      */
     public void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime)
     {
         incrementAge();
         incrementHunger();
         if(isAlive() && isDayTime) {
-            if(weather == Weather.SNOWY)
+            if(wouldDieFromSnow(weather))
             {
-                mayDieFromSnow();
-            }
-
-            giveBirth(newOrganisms);
-            // Move towards a source of food if found.
-            Location newLocation = findFood();
-            if(newLocation == null) {
-                // No food found - try to move to a free location.
-                newLocation = getField().freeAdjacentLocation(getLocation());
-            }
-            // See if it was possible to move.
-            if(newLocation != null) {
-                setLocation(newLocation);
+                setDead();
             }
             else {
-                // Overcrowding.
-                setDead();
+                giveBirth(newOrganisms);
+                // Move towards a source of food if found.
+                Location newLocation = findFood();
+                if (newLocation == null) {
+                    // No food found - try to move to a free location.
+                    newLocation = getField().freeAdjacentLocation(getLocation());
+                }
+                // See if it was possible to move.
+                if (newLocation != null) {
+                    setLocation(newLocation);
+                } else {
+                    // Overcrowding.
+                    setDead();
+                }
             }
         }
 
     }
 
     /**
-     * Sets the animal as dead based off chanceOfDeathInSnow field
+     * Returns true if the animal would die from snow
      */
-    private void mayDieFromSnow()
+    private boolean wouldDieFromSnow(Weather currentWeather)
     {
-        if(rand.nextDouble() <= chanceOfDeathInSnow)
-        {
-            setDead();
-        }
+        return (currentWeather == Weather.SNOWY && rand.nextDouble() <= chanceOfDeathInSnow);
     }
 
     /**

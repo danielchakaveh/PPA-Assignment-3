@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 /**
  * A class representing all living things
@@ -14,7 +14,7 @@ public abstract class Organism
     private Field field;
     // The animal's position in the field.
     private Location location;
-    
+
     private int trophicLevel;
     /**
      * Create a new animal at location in field.
@@ -29,8 +29,14 @@ public abstract class Organism
         this.field = field;
         setLocation(location);
         this.trophicLevel = trophicLevel;
+        
+        
+        if(field == null || location == null)
+        {
+            System.out.println("Invalid organism");
+        }
     }
-    
+
     /**
      * Returns the amount of additional days the predator can go without needing food.
      */
@@ -38,7 +44,7 @@ public abstract class Organism
     {
         return getTrophicLevel() * getTrophicLevel() * 4;
     }
-    
+
     /**
      * Returns the animals position in the food heirarchy.
      * Animals can eat other animals that are 1 position below them.
@@ -113,11 +119,16 @@ public abstract class Organism
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
-        List<Location> free = field.getFreeAdjacentLocations(getLocation());
+        List<Location> free = new ArrayList<>();
+
+        free = field.getFreeAdjacentLocations(getLocation());
+
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
             Organism young = returnOffspring(field, loc);
+            // System.out.println(young.getField());
+            // System.out.println(young.getLocation());
             newOrganism.add(young);
         }
     }
@@ -142,6 +153,10 @@ public abstract class Organism
      */
     protected Field getField()
     {
+        if(field == null) {
+            System.out.println(this.getClass().getName());
+            System.out.println("Null");
+        }
         return field;
     }
 }

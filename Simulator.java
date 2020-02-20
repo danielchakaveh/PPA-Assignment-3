@@ -126,12 +126,12 @@ public class Simulator
 
         for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
             Organism organism = it.next();
-            organism.act(newAnimals, weather, isDayTime());
             if(!organism.isAlive()) {
                 it.remove();
             }
-        }
+            organism.act(newAnimals, weather, isDayTime());
 
+        }
 
         // Add the newly born foxes and rabbits to the main lists.
         organisms.addAll(newAnimals);
@@ -143,8 +143,7 @@ public class Simulator
      */
     public int getCurrentDay()
     {
-        int day = step / 72;
-        return day;
+        return step / 72;
     }
 
     /**
@@ -152,8 +151,7 @@ public class Simulator
      */
     public int getCurrentHour()
     {
-        int timeHour = (step / 3) % 24;
-        return timeHour;
+        return (step / 3) % 24;
     }
 
     /**
@@ -161,8 +159,7 @@ public class Simulator
      */
     public int getCurrentMinute()
     {
-        int timeMinute = (step % 3) * 20;
-        return timeMinute;
+        return (step % 3) * 20;
     }
 
     /**
