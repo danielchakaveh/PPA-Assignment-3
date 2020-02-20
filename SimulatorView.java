@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,10 +20,8 @@ public class SimulatorView extends JFrame
 
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
-
-    private final String STEP_PREFIX = "Step: ";
     private final String POPULATION_PREFIX = "Population: ";
-    private JLabel stepLabel, population, infoLabel;
+    private JLabel timeLabel, population, infoLabel;
     private FieldView fieldView;
     
     // A map for storing colors for participants in the simulation
@@ -43,7 +40,7 @@ public class SimulatorView extends JFrame
         colors = new LinkedHashMap<>();
 
         setTitle("Ecosystem Simulator");
-        stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
+        timeLabel = new JLabel(getTimeString(0, 0, 0), JLabel.CENTER);
         infoLabel = new JLabel("  ", JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         
@@ -54,7 +51,7 @@ public class SimulatorView extends JFrame
         Container contents = getContentPane();
         
         JPanel infoPane = new JPanel(new BorderLayout());
-            infoPane.add(stepLabel, BorderLayout.WEST);
+            infoPane.add(timeLabel, BorderLayout.WEST);
             infoPane.add(infoLabel, BorderLayout.CENTER);
         contents.add(infoPane, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
@@ -107,7 +104,7 @@ public class SimulatorView extends JFrame
             setVisible(true);
         }
             
-        stepLabel.setText(STEP_PREFIX + step);
+        timeLabel.setText(getTimeString(0, 0, 0));
         stats.reset();
         
         fieldView.preparePaint();
@@ -128,6 +125,25 @@ public class SimulatorView extends JFrame
 
         population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
         fieldView.repaint();
+    }
+
+    /**
+     * Creates a string containing the time in days, minutes and hours
+     * @param days The number of the day
+     * @param hours The number of the hour
+     * @param minutes The number of the minute
+     * @return The newly created time string
+     */
+    private String getTimeString(int days, int hours, int minutes)
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Days: ");
+        builder.append(days);
+        builder.append(" Hours: ");
+        builder.append(hours);
+        builder.append(" Minutes: ");;
+        builder.append(minutes);
+        return builder.toString();
     }
 
     /**
