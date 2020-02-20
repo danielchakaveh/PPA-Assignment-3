@@ -68,10 +68,10 @@ public class Simulator
         view = new SimulatorView(depth, width);
         view.setColor(Rabbit.class, Color.GRAY);
         view.setColor(Fox.class, Color.RED);
-        view.setColor(Snake.class, Color.GREEN);
+        view.setColor(Snake.class, Color.BLUE);
         view.setColor(Tiger.class, Color.ORANGE);
-        view.setColor(Mouse.class, Color.BLACK);
-        view.setColor(Plant.class, Color.YELLOW);
+        view.setColor(Mouse.class, Color.YELLOW);
+        view.setColor(Plant.class, Color.GREEN);
 
         // Setup a valid starting point.
         reset();
@@ -129,13 +129,13 @@ public class Simulator
             if(!organism.isAlive()) {
                 it.remove();
             }
-            organism.act(newAnimals, weather, isDayTime());
+            organism.act(newAnimals, weather, isDayTime(getCurrentHour()));
 
         }
 
         // Add the newly born foxes and rabbits to the main lists.
         organisms.addAll(newAnimals);
-        view.showStatus(step, field);
+        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute());
     }
 
     /**
@@ -163,11 +163,12 @@ public class Simulator
     }
 
     /**
-     * 
+     * returns true if the hour is in the day time
+     * @param hour The hour to check
      */
-    public boolean isDayTime()
+    public static boolean isDayTime(int hour)
     {
-        if(getCurrentHour() >= 6 || getCurrentHour() <= 20) {
+        if(hour >= 6 && hour<= 20) {
             return true;
         }
         else {
@@ -186,7 +187,7 @@ public class Simulator
         populate();
 
         // Show the starting state in the view.
-        view.showStatus(step, field);
+        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute());
     }
 
     /**

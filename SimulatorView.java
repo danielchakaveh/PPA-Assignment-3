@@ -16,10 +16,11 @@ import java.util.Map;
 public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
-    private static final Color EMPTY_COLOR = Color.white;
+    private static final Color DAY_COLOR = Color.
+    private static final Color NIGHT_COLOR = Color.BLACK;
 
     // Color used for objects that have no defined color.
-    private static final Color UNKNOWN_COLOR = Color.gray;
+    private static final Color UNKNOWN_COLOR = Color.MAGENTA;
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel timeLabel, population, infoLabel;
     private FieldView fieldView;
@@ -96,10 +97,12 @@ public class SimulatorView extends JFrame
     /**
      * Show the current status of the field.
      * Show the current time and day of the simulator.
-     * @param step Which iteration step it is.
      * @param field The field whose status is to be displayed.
+     * @param days  The number of days since the simulator started
+     * @param hours The number of hours since the simulator started
+     * @param minutes The number of minutes since the simulator started
      */
-    public void showStatus(int step, Field field, int days, int hours, int minutes)
+    public void showStatus(Field field, int days, int hours, int minutes)
     {
         if(!isVisible()) {
             setVisible(true);
@@ -110,6 +113,11 @@ public class SimulatorView extends JFrame
         
         fieldView.preparePaint();
 
+        // Either day colour or night colour based off the hour
+        Color currentColour = Simulator.isDayTime(hours) ? DAY_COLOR : NIGHT_COLOR;
+        population.setBackground(currentColour);
+        infoLabel.setBackground(currentColour);
+
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
                 Object animal = field.getObjectAt(row, col);
@@ -118,7 +126,7 @@ public class SimulatorView extends JFrame
                     fieldView.drawMark(col, row, getColor(animal.getClass()));
                 }
                 else {
-                    fieldView.drawMark(col, row, EMPTY_COLOR);
+                    fieldView.drawMark(col, row, currentColour);
                 }
             }
         }
