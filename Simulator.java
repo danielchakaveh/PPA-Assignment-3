@@ -66,11 +66,14 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Jackal.class, Color.getHSBColor(39, 55, 48));
+		// Light yellow-orange
+        view.setColor(Jackal.class, new Color(255, 204, 51));
         view.setColor(Bear.class, Color.GRAY);
-        view.setColor(Deer.class, Color.getHSBColor(0, 100, 35));
-        view.setColor(Tiger.class, Color.getHSBColor(25, 100, 50));
-        view.setColor(Beaver.class, Color.getHSBColor(23, 100, 15));
+        view.setColor(Deer.class, Color.RED);
+		// Orange-brown
+        view.setColor(Tiger.class, new Color(255, 153, 0));
+		// Brown
+        view.setColor(Beaver.class, Color.getHSBColor(204, 102, 0));
         view.setColor(Plant.class, Color.GREEN);
 
         // Setup a valid starting point.
