@@ -17,12 +17,12 @@ public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
     private static final Color DAY_COLOR = Color.getHSBColor(55, 100, 90);
-    private static final Color NIGHT_COLOR = Color.getHSBColor(235, 100, 11);
+    private static final Color NIGHT_COLOR = Color.DARK_GRAY;
 
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.MAGENTA;
     private final String POPULATION_PREFIX = "Population: ";
-    private JLabel timeLabel, population, infoLabel;
+    private JLabel timeLabel, population, infoLabel, weatherLabel;
     private FieldView fieldView;
     private JPanel infoPane;
     
@@ -44,6 +44,7 @@ public class SimulatorView extends JFrame
         setTitle("Jungle Simulator");
         timeLabel = new JLabel(getTimeString(0, 0, 0), JLabel.CENTER);
         infoLabel = new JLabel("  ", JLabel.CENTER);
+        weatherLabel = new JLabel("", JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
         
@@ -56,6 +57,7 @@ public class SimulatorView extends JFrame
         infoPane = new JPanel(new BorderLayout());
             infoPane.add(timeLabel, BorderLayout.WEST);
             infoPane.add(infoLabel, BorderLayout.CENTER);
+            infoPane.add(weatherLabel, BorderLayout.EAST);
         contents.add(infoPane, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
@@ -72,7 +74,6 @@ public class SimulatorView extends JFrame
     {
         colors.put(organismClass, color);
     }
-
     /**
      * Display a short information label at the top of the window.
      */
@@ -104,18 +105,19 @@ public class SimulatorView extends JFrame
      * @param hours The number of hours since the simulator started
      * @param minutes The number of minutes since the simulator started
      */
-    public void showStatus(Field field, int days, int hours, int minutes)
+    public void showStatus(Field field, int days, int hours, int minutes, Weather weather)
     {
         if(!isVisible()) {
             setVisible(true);
         }
 
         timeLabel.setText(getTimeString(days, hours, minutes));
+        weatherLabel.setText(weather.toString());
         stats.reset();
         
         fieldView.preparePaint();
 
-        // Either day colour or night colour based off the hour
+        // Sorts out day/night weather
         Color currentColour = Simulator.isDayTime(hours) ? DAY_COLOR : NIGHT_COLOR;
         population.setBackground(currentColour);
         infoPane.setBackground(currentColour);

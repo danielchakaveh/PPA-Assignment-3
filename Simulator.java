@@ -14,7 +14,7 @@ public class Simulator
     {
         Simulator simulator = new Simulator();
 
-        simulator.runLongSimulation();
+        simulator.simulateOneStep();
     }
 
     // Constants representing configuration information for the simulation.
@@ -135,7 +135,7 @@ public class Simulator
 
         // Add the newly born foxes and rabbits to the main lists.
         organisms.addAll(newAnimals);
-        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute());
+        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute(), weather);
     }
 
     /**
@@ -182,7 +182,7 @@ public class Simulator
         populate();
 
         // Show the starting state in the view.
-        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute());
+        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute(), weather);
     }
 
     /**
