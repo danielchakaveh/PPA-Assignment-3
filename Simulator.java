@@ -66,11 +66,11 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.GRAY);
-        view.setColor(Fox.class, Color.RED);
-        view.setColor(Snake.class, Color.BLUE);
-        view.setColor(Tiger.class, Color.ORANGE);
-        view.setColor(Mouse.class, Color.YELLOW);
+        view.setColor(Jackal.class, Color.getHSBColor(39, 55, 48));
+        view.setColor(Bear.class, Color.GRAY);
+        view.setColor(Dear.class, Color.getHSBColor(0, 100, 35));
+        view.setColor(Tiger.class, Color.getHSBColor(25, 100, 50));
+        view.setColor(Beaver.class, Color.getHSBColor(23, 100, 15));
         view.setColor(Plant.class, Color.GREEN);
 
         // Setup a valid starting point.
@@ -198,25 +198,25 @@ public class Simulator
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= Mouse.creationProbability)
+                if(rand.nextDouble() <= Beaver.creationProbability)
                 {
                     Location location = new Location(row, col);
-                    Mouse mouse = new Mouse(true, field, location);
-                    organisms.add(mouse);
+                    Beaver beaver = new Beaver(true, field, location);
+                    organisms.add(beaver);
                 }
-                if(rand.nextDouble() <= Rabbit.creationProbability) {
+                if(rand.nextDouble() <= Jackal.creationProbability) {
                     Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
+                    Jackal rabbit = new Jackal(true, field, location);
                     organisms.add(rabbit);
                 }
-                else if(rand.nextDouble() <= Fox.creationProbability) {
+                else if(rand.nextDouble() <= Bear.creationProbability) {
                     Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
+                    Bear fox = new Bear(true, field, location);
                     organisms.add(fox);
                 }
-                else if(rand.nextDouble() <= Snake.creationProbability) {
+                else if(rand.nextDouble() <= Dear.creationProbability) {
                     Location location = new Location(row, col);
-                    Snake snake = new Snake(true, field, location);
+                    Dear snake = new Dear(true, field, location);
                     organisms.add(snake);
                 }
                 else if(rand.nextDouble() <= Tiger.creationProbability) {

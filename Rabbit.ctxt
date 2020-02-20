@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=Rabbit
+comment0.target=Jackal
 comment0.text=\n\ A\ simple\ model\ of\ a\ rabbit.\n\ Rabbits\ age,\ move,\ breed,\ and\ die.\n\ \n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\n\ @version\ 2016.02.29\ (2)\n
 comment1.params=randomAge\ field\ location
-comment1.target=Rabbit(boolean,\ Field,\ Location)
+comment1.target=Jackal(boolean,\ Field,\ Location)
 comment1.text=\n\ Create\ a\ new\ rabbit.\ A\ rabbit\ may\ be\ created\ with\ age\n\ zero\ (a\ new\ born)\ or\ with\ a\ random\ age.\n\ \n\ @param\ randomAge\ If\ true,\ the\ rabbit\ will\ have\ a\ random\ age.\n\ @param\ field\ The\ field\ currently\ occupied.\n\ @param\ location\ The\ location\ within\ the\ field.\n
 comment2.params=field\ location
 comment2.target=Animal\ returnOffspring(Field,\ Location)

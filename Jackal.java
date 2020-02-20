@@ -1,6 +1,3 @@
-import java.util.List;
-import java.util.Random;
-
 /**
  * A simple model of a rabbit.
  * Rabbits age, move, breed, and die.
@@ -8,7 +5,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
  */
-public class Rabbit extends Animal
+public class Jackal extends Animal
 {
     public static double creationProbability = 0.1;
     /**
@@ -19,12 +16,12 @@ public class Rabbit extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Rabbit(boolean randomAge, Field field, Location location) {
+    public Jackal(boolean randomAge, Field field, Location location) {
         super(randomAge, field, location, 75, 5, 0.7, 5, 3, 0.2);
     }
         @Override
         protected Animal returnOffspring(Field field, Location location) {
-            return new Rabbit(false, field, location);
+            return new Jackal(false, field, location);
         }
 }
 

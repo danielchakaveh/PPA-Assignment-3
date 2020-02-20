@@ -16,14 +16,15 @@ import java.util.Map;
 public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
-    private static final Color DAY_COLOR = Color.
-    private static final Color NIGHT_COLOR = Color.BLACK;
+    private static final Color DAY_COLOR = Color.getHSBColor(55, 100, 90);
+    private static final Color NIGHT_COLOR = Color.getHSBColor(235, 100, 11);
 
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.MAGENTA;
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel timeLabel, population, infoLabel;
     private FieldView fieldView;
+    private JPanel infoPane;
     
     // A map for storing colors for participants in the simulation
     private Map<Class, Color> colors;
@@ -40,10 +41,11 @@ public class SimulatorView extends JFrame
         stats = new FieldStats();
         colors = new LinkedHashMap<>();
 
-        setTitle("Ecosystem Simulator");
+        setTitle("Jungle Simulator");
         timeLabel = new JLabel(getTimeString(0, 0, 0), JLabel.CENTER);
         infoLabel = new JLabel("  ", JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
+
         
         setLocation(100, 50);
         
@@ -51,7 +53,7 @@ public class SimulatorView extends JFrame
 
         Container contents = getContentPane();
         
-        JPanel infoPane = new JPanel(new BorderLayout());
+        infoPane = new JPanel(new BorderLayout());
             infoPane.add(timeLabel, BorderLayout.WEST);
             infoPane.add(infoLabel, BorderLayout.CENTER);
         contents.add(infoPane, BorderLayout.NORTH);
@@ -116,7 +118,8 @@ public class SimulatorView extends JFrame
         // Either day colour or night colour based off the hour
         Color currentColour = Simulator.isDayTime(hours) ? DAY_COLOR : NIGHT_COLOR;
         population.setBackground(currentColour);
-        infoLabel.setBackground(currentColour);
+        infoPane.setBackground(currentColour);
+        getContentPane().setBackground(currentColour);
 
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
@@ -150,7 +153,7 @@ public class SimulatorView extends JFrame
         builder.append(days);
         builder.append(" Hours: ");
         builder.append(hours);
-        builder.append(" Minutes: ");;
+        builder.append(" Minutes: ");
         builder.append(minutes);
         return builder.toString();
     }

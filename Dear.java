@@ -1,12 +1,10 @@
-import java.util.List;
-
 /**
- * Class Snake - Represents a snake animal in the simulation
+ * Class Dear - Represents a snake animal in the simulation
  *
  * @author Obed Ngigi, Daniel Chakaveh-Roberts
  * @version 1.0
  */
-public class Snake extends Animal
+public class Dear extends Animal
 {
     public static double creationProbability = 0.05;
     /**
@@ -17,9 +15,9 @@ public class Snake extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Snake(boolean randomAge, Field field, Location location)
+    public Dear(boolean randomAge, Field field, Location location)
     {
-        super(randomAge, field, location, 450, 12, 0.01, 6, 4, 0.1);
+        super(randomAge, field, location, 450, 12, 0.01, 6, 2, 0.1);
     }
 
     /**
@@ -29,8 +27,8 @@ public class Snake extends Animal
      * @return A baby snake
      */
     @Override
-    public Snake returnOffspring(Field field, Location location)
+    public Dear returnOffspring(Field field, Location location)
     {
-        return new Snake(false, field, location);
+        return new Dear(false, field, location);
     }
 }
