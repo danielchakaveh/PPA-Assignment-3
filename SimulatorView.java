@@ -62,7 +62,7 @@ public class SimulatorView extends JFrame
     
     /**
      * Define a color to be used for a given class of animal.
-     * @param animalClass The animal's Class object.
+     * @param organismClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
     public void setColor(Class organismClass, Color color)
