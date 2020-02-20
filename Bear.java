@@ -7,7 +7,7 @@
  */
 public class Bear extends Animal
 {
-    public static double creationProbability = 0.06;
+    public static double creationProbability = 0.027;
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -17,7 +17,7 @@ public class Bear extends Animal
      * @param location The location within the field.
      */
     public Bear(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 50, 13, 0.1, 3, 4, 0.1);
+        super(randomAge, field, location, 150, 11, 0.23, 3, 4, 0);
     }
 
     /**

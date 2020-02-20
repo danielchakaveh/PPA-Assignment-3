@@ -16,7 +16,8 @@ import java.util.Map;
 public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
-    private static final Color DAY_COLOR = Color.getHSBColor(55, 100, 90);
+    private static final Color DAY_COLOR = Color.WHITE;
+            //Color.getHSBColor(55, 100, 90);
     private static final Color NIGHT_COLOR = Color.DARK_GRAY;
 
     // Color used for objects that have no defined color.

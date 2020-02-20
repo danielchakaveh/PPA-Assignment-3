@@ -11,7 +11,7 @@ public class Plant extends Organism
 {
     public static double creationProbability = 0.1;
     private static final Random rand = Randomizer.getRandom();
-    private static final int maxNewPlants = 3;
+    private static final int maxNewPlants = 5;
     private static final double breedingProbability = 0.25;
     private static final double chanceOfDeathInDrought = 0.1;
     private static final double chanceOfDeathInSnow = 0.15;
@@ -82,7 +82,7 @@ public class Plant extends Organism
     protected int breed() {
         if(rand.nextDouble() <= breedingProbability)
         {
-            return rand.nextInt(5) + 1;
+            return rand.nextInt(maxNewPlants) + 1;
         }
         else{
             return 0;

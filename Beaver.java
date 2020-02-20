@@ -6,7 +6,7 @@
  */
 public class Beaver extends Animal
 {
-    public static double creationProbability = 0.2;
+    public static double creationProbability = 0.1;
     /**
      * Create a Jackal. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -16,7 +16,7 @@ public class Beaver extends Animal
      * @param location The location within the field.
      */
     public Beaver(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 140, 1, 0.75, 8, 2, 0.4);
+        super(randomAge, field, location, 40, 3, 0.65, 8, 2, 0.4);
     }
 
     /**

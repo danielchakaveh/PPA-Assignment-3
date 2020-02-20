@@ -7,7 +7,7 @@
  */
 public class Jackal extends Animal
 {
-    public static double creationProbability = 0.1;
+    public static double creationProbability = 0.05;
     /**
      * Create a new rabbit. A rabbit may be created with age
      * zero (a new born) or with a random age.
@@ -17,7 +17,7 @@ public class Jackal extends Animal
      * @param location The location within the field.
      */
     public Jackal(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 75, 5, 0.7, 5, 3, 0.2);
+        super(randomAge, field, location, 100, 20, 0.1, 5, 3, 0.1);
     }
         @Override
         protected Animal returnOffspring(Field field, Location location) {
