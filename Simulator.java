@@ -37,7 +37,7 @@ public class Simulator
     // The current weather in the simulation
     private Weather weather;
     // Randomizer to allow for randomness in simulation
-    Random rand = Randomizer.getRandom();
+    private Random rand = Randomizer.getRandom();
 
     /**
      * Construct a simulation field with default size.
@@ -168,12 +168,7 @@ public class Simulator
      */
     public static boolean isDayTime(int hour)
     {
-        if(hour >= 6 && hour<= 20) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (hour >= 6 && hour<= 20);
     }
 
     /**
