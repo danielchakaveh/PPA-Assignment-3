@@ -68,7 +68,7 @@ public class Simulator
         view = new SimulatorView(depth, width);
         view.setColor(Jackal.class, Color.getHSBColor(39, 55, 48));
         view.setColor(Bear.class, Color.GRAY);
-        view.setColor(Dear.class, Color.getHSBColor(0, 100, 35));
+        view.setColor(Deer.class, Color.getHSBColor(0, 100, 35));
         view.setColor(Tiger.class, Color.getHSBColor(25, 100, 50));
         view.setColor(Beaver.class, Color.getHSBColor(23, 100, 15));
         view.setColor(Plant.class, Color.GREEN);
@@ -209,9 +209,9 @@ public class Simulator
                     Bear fox = new Bear(true, field, location);
                     organisms.add(fox);
                 }
-                else if(rand.nextDouble() <= Dear.creationProbability) {
+                else if(rand.nextDouble() <= Deer.creationProbability) {
                     Location location = new Location(row, col);
-                    Dear snake = new Dear(true, field, location);
+                    Deer snake = new Deer(true, field, location);
                     organisms.add(snake);
                 }
                 else if(rand.nextDouble() <= Tiger.creationProbability) {

@@ -1,10 +1,10 @@
 /**
- * Class Dear - Represents a snake animal in the simulation
+ * Class Deer - Represents a snake animal in the simulation
  *
  * @author Obed Ngigi, Daniel Chakaveh-Roberts
  * @version 1.0
  */
-public class Dear extends Animal
+public class Deer extends Animal
 {
     public static double creationProbability = 0.07;
     /**
@@ -15,7 +15,7 @@ public class Dear extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Dear(boolean randomAge, Field field, Location location)
+    public Deer(boolean randomAge, Field field, Location location)
     {
         super(randomAge, field, location, 75, 12, 0.45, 6, 2, 0.1);
     }
@@ -27,8 +27,8 @@ public class Dear extends Animal
      * @return A baby snake
      */
     @Override
-    public Dear returnOffspring(Field field, Location location)
+    public Deer returnOffspring(Field field, Location location)
     {
-        return new Dear(false, field, location);
+        return new Deer(false, field, location);
     }
 }
