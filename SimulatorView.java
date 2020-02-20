@@ -95,16 +95,17 @@ public class SimulatorView extends JFrame
 
     /**
      * Show the current status of the field.
+     * Show the current time and day of the simulator.
      * @param step Which iteration step it is.
      * @param field The field whose status is to be displayed.
      */
-    public void showStatus(int step, Field field)
+    public void showStatus(int step, Field field, int days, int hours, int minutes)
     {
         if(!isVisible()) {
             setVisible(true);
         }
-            
-        timeLabel.setText(getTimeString(0, 0, 0));
+
+        timeLabel.setText(getTimeString(days, hours, minutes));
         stats.reset();
         
         fieldView.preparePaint();
