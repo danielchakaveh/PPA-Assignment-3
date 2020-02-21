@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Plant
+comment0.text=\r\n\ Class\ Plant\ -\ Represents\ a\ plant\ in\ the\ simulation\r\n\r\n\ @author\ Obed\ Ngigi,\ Daniel\ Chakaveh-Roberts\r\n\ @version\ 1.0\r\n
+comment1.params=field\ location
+comment1.target=Plant(Field,\ Location)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Plant\r\n
+comment2.params=newOrganisms\ weather\ isDayTime
+comment2.target=void\ act(java.util.List,\ Weather,\ boolean)
+comment2.text=\r\n\ \ May\ give\ birth\ or\ may\ not\r\n\ @param\ newOrganisms\ A\ list\ to\ receive\ newly\ born\ animals.\r\n\ @param\ weather\ The\ current\ weather\r\n\ @param\ isDayTime\r\n
+comment3.params=
+comment3.target=void\ mightDieInSnow()
+comment3.text=\r\n\ A\ plant\ may\ die\r\n\ Whether\ on\ not\ plant\ dies\ is\ based\ off\ of\ chanceOfDeathInSnow\r\n
+comment4.params=
+comment4.target=void\ mightDieInDrought()
+comment4.text=\r\n\ A\ plant\ may\ die\r\n\ Whether\ on\ not\ plant\ dies\ is\ based\ off\ of\ chanceOfDeathInDrought\r\n
+comment5.params=
+comment5.target=int\ breed()
+comment5.text=\r\n\ Calculates\ how\ many\ births\ for\ the\ plant\ to\ have\r\n\ @return\ number\ of\ births\ for\ plant\ to\ have\r\n
+comment6.params=field\ location
+comment6.target=Organism\ returnOffspring(Field,\ Location)
+comment6.text=\r\n\r\n\ @param\ field\ The\ grid\ for\ the\ animal\ to\ be\ placed\ on\r\n\ @param\ location\ \ The\ position\ of\ the\ animal\ on\ the\ grid\r\n\ @return\ A\ new\ basic\ plant\r\n
+numComments=7

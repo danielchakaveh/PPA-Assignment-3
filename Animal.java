@@ -57,11 +57,11 @@ public abstract class Animal extends Organism
 
         if(randomAge) {
             age = rand.nextInt(maxAge);
-            foodLevel = rand.nextInt(getFoodValue() - 4);
+            foodLevel = rand.nextInt(getFoodValue() * 3 - 4);
         }
         else {
             age = 0;
-            foodLevel = getFoodValue() - 4;
+            foodLevel = getFoodValue()* 3;
         }
     }
 
@@ -89,6 +89,7 @@ public abstract class Animal extends Organism
             if(wouldDieFromSnow(weather))
             {
                 setDead();
+                System.out.println(getClass().getName() + " died of snow");
             }
             else {
                 giveBirth(newOrganisms);
@@ -103,6 +104,7 @@ public abstract class Animal extends Organism
                     setLocation(newLocation);
                 } else {
                     // Overcrowding.
+                    System.out.println(this.getClass().getName() + " died of overcrowding");
                     setDead();
                 }
             }
@@ -134,6 +136,7 @@ public abstract class Animal extends Organism
             if(!(organism == null) && canEat(organism)) {
                 if(organism.isAlive()) { 
                     organism.setDead();
+                    System.out.println(organism.getClass().getName() + " died of being eaten");
                     foodLevel += organism.getFoodValue();
                     return where;
                 }
@@ -150,6 +153,7 @@ public abstract class Animal extends Organism
         age++;
         if(age > maxAge) {
             setDead();
+            System.out.println(getClass().getName() + " died of old age");
         }
     }
 
@@ -161,6 +165,7 @@ public abstract class Animal extends Organism
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
+            System.out.println(getClass().getName() + " died of hunger");
         }
     }
 

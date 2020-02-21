@@ -16,7 +16,7 @@ public class Beaver extends Animal
      * @param location The location within the field.
      */
     public Beaver(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 40, 3, 0.65, 8, 2, 0.4);
+        super(randomAge, field, location, 160, 8, 0.25, 8, 2, 0.06);
     }
 
     /**

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Beaver
+comment0.text=\r\n\ Class\ Beaver\ -\ An\ animal\ which\ is\ low\ down\ the\ food\ chain\r\n\r\n\ @author\ Obed\ Ngigi,\ Daniel\ Chakaveh-Roberts\r\n\ @version\ 1.0\r\n
+comment1.params=randomAge\ field\ location
+comment1.target=Beaver(boolean,\ Field,\ Location)
+comment1.text=\r\n\ Create\ a\ Beaver.\ A\ beaver\ can\ be\ created\ as\ a\ new\ born\ (age\ zero\r\n\ and\ not\ hungry)\ or\ with\ a\ random\ age\ and\ food\ level.\r\n\r\n\ @param\ randomAge\ If\ true,\ the\ mouse\ will\ have\ random\ age\ and\ hunger\ level.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
+comment2.params=field\ location
+comment2.target=Animal\ returnOffspring(Field,\ Location)
+comment2.text=\r\n\ Creates\ a\ baby\ beaver\r\n\ @param\ field\ The\ grid\ for\ the\ animal\ to\ be\ placed\ on\r\n\ @param\ location\ \ The\ position\ of\ the\ animal\ on\ the\ grid\r\n\ @return\ Returns\ a\ new\ born\ beaver\r\n
+numComments=3

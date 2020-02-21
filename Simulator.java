@@ -14,16 +14,18 @@ public class Simulator
     {
         Simulator simulator = new Simulator();
 
+        System.out.println("Test");
+
         simulator.runLongSimulation();
     }
 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
-    private static final int DEFAULT_WIDTH = 120;
+    private static final int DEFAULT_WIDTH = 240;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 80;
+    private static final int DEFAULT_DEPTH = 160;
     // The probability of weather changing at any step
-    private static final double weatherChangeProbability = 0.03;
+    private static final double weatherChangeProbability = 0.07;
     // The probability of weather changing at any step
 
     // List of animals in the field.
@@ -66,11 +68,14 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Jackal.class, Color.getHSBColor(39, 55, 48));
+		// Light yellow-orange
+        view.setColor(Jackal.class, new Color(255, 204, 51));
         view.setColor(Bear.class, Color.GRAY);
-        view.setColor(Deer.class, Color.getHSBColor(0, 100, 35));
-        view.setColor(Tiger.class, Color.getHSBColor(25, 100, 50));
-        view.setColor(Beaver.class, Color.getHSBColor(23, 100, 15));
+        view.setColor(Deer.class, Color.RED);
+		// Orange-brown
+        view.setColor(Tiger.class, new Color(255, 153, 0));
+		// Brown
+        view.setColor(Beaver.class, Color.getHSBColor(204, 102, 0));
         view.setColor(Plant.class, Color.GREEN);
 
         // Setup a valid starting point.
@@ -103,7 +108,7 @@ public class Simulator
     public void simulate(int numSteps){
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            delay(1000);   // uncomment this to run more slowly
+            delay(40);   // uncomment this to run more slowly
         }
     }
 
@@ -176,7 +181,7 @@ public class Simulator
      */
     public void reset()
     {
-        step = 36;
+        step = 0;
         organisms.clear();
         setRandomWeather();
         populate();
