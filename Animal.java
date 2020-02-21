@@ -25,8 +25,7 @@ public abstract class Animal extends Organism
 
     /**
      * Create a new animal at location in field.
-     *
-     * @param randomAge True if you want the animal to be given a random age
+     *  @param randomAge True if you want the animal to be given a random age
      * @param field The field currently occupied.
      * @param location The location within the field.
      * @param maxAge The age in steps at which the animal dies
@@ -35,15 +34,14 @@ public abstract class Animal extends Organism
      * @param maxOffspring The most births the animal can have at once
      * @param trophicLevel The animals position in the food chain
      * @param chanceOfDeathInSnow The chance of animal dying due to snow at any time
+     * @param diseaseMutationProbability The probability of a disease first appearing in this organism
      */
     public Animal(boolean randomAge, Field field, Location location, int maxAge,
-    int breedingAge, double breedingProbability, int maxOffspring, int trophicLevel, double chanceOfDeathInSnow)
+                  int breedingAge, double breedingProbability, int maxOffspring, int trophicLevel, double chanceOfDeathInSnow, double diseaseMutationProbability)
     {
-        super(field, location, trophicLevel, chanceOfDeathInSnow, breedingProbability, maxOffspring);
+        super(field, location, trophicLevel, chanceOfDeathInSnow, breedingProbability, maxOffspring, diseaseMutationProbability);
         this.maxAge = maxAge;
         this.breedingAge = breedingAge;
-        this.breedingProbability = breedingProbability;
-        this.chanceOfDeathInSnow = chanceOfDeathInSnow;
 
         gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
         // Animal has a 50% chance of being male or female
@@ -82,10 +80,11 @@ public abstract class Animal extends Organism
             if(wouldDieFromSnow(weather))
             {
                 setDead();
-                System.out.println(getClass().getName() + " died of snow");
             }
             else {
                 giveBirth(newOrganisms);
+                affectByDiseases();
+                mutateNewDisease();
                 // Move towards a source of food if found.
                 Location newLocation = findFood();
                 if (newLocation == null) {
@@ -97,7 +96,6 @@ public abstract class Animal extends Organism
                     setLocation(newLocation);
                 } else {
                     // Overcrowding.
-                    System.out.println(this.getClass().getName() + " died of overcrowding");
                     setDead();
                 }
             }
@@ -129,7 +127,6 @@ public abstract class Animal extends Organism
             if(!(organism == null) && canEat(organism)) {
                 if(organism.isAlive()) { 
                     organism.setDead();
-                    System.out.println(organism.getClass().getName() + " died of being eaten");
                     foodLevel += organism.getFoodValue();
                     return where;
                 }
@@ -146,7 +143,6 @@ public abstract class Animal extends Organism
         age++;
         if(age > maxAge) {
             setDead();
-            System.out.println(getClass().getName() + " died of old age");
         }
     }
 
@@ -158,7 +154,6 @@ public abstract class Animal extends Organism
         foodLevel--;
         if(foodLevel <= 0) {
             setDead();
-            System.out.println(getClass().getName() + " died of hunger");
         }
     }
 

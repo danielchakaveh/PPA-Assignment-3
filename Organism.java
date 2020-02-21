@@ -14,22 +14,31 @@ public abstract class Organism
     private Field field;
     // The animal's position in the field.
     private Location location;
-
+    // The level of the organism in the food chain
     private int trophicLevel;
-
+    // The chance of an organism dying from snow at any step
     protected double chanceOfDeathInSnow;
-
+    // The chance of 2 breedable organisms breeding at any step
     protected double breedingProbability;
-
+    // The most offspring an organism can create at once
     protected int maxOffspring;
+    // The probability of a disease first appearing in this organism
+    private double diseaseMutationProbability;
+    protected Random rand = Randomizer.getRandom();
+    // The diseases an organism has
+    private Set<Disease> diseases = new HashSet<Disease>();
+
     /**
      * Create a new animal at location in field.
-     *
-     * @param field The field currently occupied.
+     *  @param field The field currently occupied.
      * @param location The location within the field.
      * @param trophicLevel The animals position in the food chain
+     * @param chanceOfDeathInSnow The chance of an organism dying from snow at any step
+     * @param breedingProbability The chance of 2 breedable organisms breeding at any step
+     * @param maxOffspring The most offspring an organism can create at once
+     * @param diseaseMutationProbability The probability of a disease first appearing in this organism
      */
-    public Organism(Field field, Location location, int trophicLevel, double chanceOfDeathInSnow, double breedingProbability, int maxOffspring)
+    public Organism(Field field, Location location, int trophicLevel, double chanceOfDeathInSnow, double breedingProbability, int maxOffspring, double diseaseMutationProbability)
     {
         alive = true;
         this.field = field;
@@ -38,10 +47,56 @@ public abstract class Organism
         this.chanceOfDeathInSnow = chanceOfDeathInSnow;
         this.breedingProbability = breedingProbability;
         this.maxOffspring = maxOffspring;
+        this.diseaseMutationProbability = diseaseMutationProbability;
         
         if(field == null || location == null)
         {
             System.out.println("Invalid organism");
+        }
+    }
+
+    protected void spreadDiseases()
+    {
+        for (Location adjacentLocation: field.adjacentLocations(location)) {
+            if(field.getObjectAt(adjacentLocation).getClass() == getClass())    //disease only spreads between organisms of same species
+            {
+                for (Disease disease: diseases) {
+                    if(disease.wouldSpread())
+                    {
+                        ((Organism)field.getObjectAt(adjacentLocation)).giveDisease(disease);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Gives a disease to the organism
+     * @param disease The disease to be contracted
+     */
+    public void giveDisease(Disease disease)
+    {
+        diseases.add(disease);
+    }
+
+    /**
+     * May randomly contract a disease based off of diseaseMutationProbability
+     */
+    protected void mutateNewDisease()
+    {
+        if(rand.nextDouble() <= diseaseMutationProbability)
+        {
+            giveDisease(Disease.getRandomDisease());
+        }
+    }
+
+    /**
+     * Makes each contracted disease affect the current organism
+     */
+    protected void affectByDiseases()
+    {
+        for (Disease disease: diseases) {
+            disease.affect(this);
         }
     }
 

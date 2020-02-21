@@ -17,7 +17,7 @@ public class Plant extends Organism
      * Constructor for objects of class Plant
      */
     public Plant(Field field, Location location){
-        super(field, location, 1, 0.1, 0.8, 6);
+        super(field, location, 1, 0.1, 0.8, 6, 1);
         // Location variable refers to 
         // the set location of animals species
     }
