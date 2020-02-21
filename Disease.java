@@ -1,4 +1,5 @@
-public abstract class Disease {
+public abstract class Disease
+{
     // The chance of an animal dying from the disease at any step
     private double mortalityRate;
     // The chance of a disease spreading to another being at any step
