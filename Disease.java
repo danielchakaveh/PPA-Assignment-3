@@ -9,7 +9,8 @@ public class Disease
     private String name;
 
     /**
-     *
+     * Creates a new disease
+     * @param diseaseName  The name of the disease
      * @param contagiousness The chance of the disease spreading to another being upon contact with an infected
      * @param mortalityRate The chance of an infected dying at any step
      */
@@ -17,6 +18,7 @@ public class Disease
     {
         this.contagiousness = contagiousness;
         name = diseaseName;
+        this.mortalityRate = mortalityRate;
     }
 
     /**
@@ -27,9 +29,18 @@ public class Disease
     {
         if(randomizer.nextDouble() <= mortalityRate)
         {
-            infected.setDead();
             System.out.println(infected.getClass().getName() + " killed by disease");
+            infected.setDead();
         }
+    }
+
+    /**
+     * Returns the name of the disease
+     * @return The name of the disease
+     */
+    public String getName()
+    {
+        return name;
     }
 
     /**

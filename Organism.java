@@ -48,11 +48,6 @@ public abstract class Organism
         this.breedingProbability = breedingProbability;
         this.maxOffspring = maxOffspring;
         this.diseaseMutationProbability = diseaseMutationProbability;
-        
-        if(field == null || location == null)
-        {
-            System.out.println("Invalid organism");
-        }
     }
 
     protected void spreadDiseases()
@@ -76,6 +71,7 @@ public abstract class Organism
      */
     public void giveDisease(Disease disease)
     {
+        //System.out.println(disease.getName() + " contracted by " + getClass().getName());
         diseases.add(disease);
     }
 
@@ -190,8 +186,6 @@ public abstract class Organism
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
             Organism young = returnOffspring(field, loc);
-            // System.out.println(young.getField());
-            // System.out.println(young.getLocation());
             newOrganism.add(young);
         }
     }
@@ -216,10 +210,6 @@ public abstract class Organism
      */
     protected Field getField()
     {
-        if(field == null) {
-            System.out.println(this.getClass().getName());
-            System.out.println("Null");
-        }
         return field;
     }
 }

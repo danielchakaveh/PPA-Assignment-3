@@ -17,7 +17,7 @@ public class Plant extends Organism
      * Constructor for objects of class Plant
      */
     public Plant(Field field, Location location){
-        super(field, location, 1, 0.1, 0.8, 6, 1);
+        super(field, location, 1, 0.1, 0.8, 6, 0);
         // Location variable refers to 
         // the set location of animals species
     }
@@ -31,6 +31,12 @@ public class Plant extends Organism
 	@Override
     public void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime)
     {
+        if(!isAlive())
+            return; //Does not do anything if plant is dead
+
+        affectByDiseases();
+        mutateNewDisease();
+
         if(!isAlive())
             return; //Does not do anything if plant is dead
 

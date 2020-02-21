@@ -85,6 +85,8 @@ public abstract class Animal extends Organism
                 giveBirth(newOrganisms);
                 affectByDiseases();
                 mutateNewDisease();
+                if(!isAlive())
+                    return;
                 // Move towards a source of food if found.
                 Location newLocation = findFood();
                 if (newLocation == null) {
