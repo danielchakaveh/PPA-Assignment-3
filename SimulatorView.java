@@ -59,9 +59,9 @@ public class SimulatorView extends JFrame
             infoPane.add(timeLabel, BorderLayout.WEST);
             infoPane.add(infoLabel, BorderLayout.CENTER);
             infoPane.add(weatherLabel, BorderLayout.EAST);
-        contents.add(infoPane, BorderLayout.NORTH);
+        contents.add(//infoPane, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
-        contents.add(population, BorderLayout.SOUTH);
+        contents.add(//population, BorderLayout.SOUTH);
         pack();
         setVisible(true);
     }
@@ -123,6 +123,15 @@ public class SimulatorView extends JFrame
         population.setBackground(currentColour);
         infoPane.setBackground(currentColour);
         getContentPane().setBackground(currentColour);
+
+		if(currentColour = NIGHT_COLOR) {
+		population.setForeground(Color.WHITE);
+		infoPane.setForeground(Color.WHITE);
+		}
+		else {
+		population.setForeground(Color.BLACK);
+		infoPane.setForeground(Color.BLACK);
+		}
 
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {

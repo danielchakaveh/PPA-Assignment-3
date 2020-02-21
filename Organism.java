@@ -8,20 +8,21 @@ import java.util.*;
  */
 public abstract class Organism
 {
-    // Whether the animal is alive or not.
+    // Whether the organism is alive or not.
     private boolean alive;
-    // The animal's field.
+    // The organism's field.
     private Field field;
-    // The animal's position in the field.
+    // The organism's position in the field.
     private Location location;
-
+	//
     private int trophicLevel;
+
     /**
-     * Create a new animal at location in field.
+     * Create a new organism at location in field.
      * 
      * @param field The field currently occupied.
      * @param location The location within the field.
-     * @param trophicLevel The animals position in the food chain
+     * @param trophicLevel The organisms position in the food chain
      */
     public Organism(Field field, Location location, int trophicLevel)
     {
@@ -29,6 +30,7 @@ public abstract class Organism
         this.field = field;
         setLocation(location);
         this.trophicLevel = trophicLevel;
+		diseased = false;
         
         
         if(field == null || location == null)
@@ -46,8 +48,8 @@ public abstract class Organism
     }
 
     /**
-     * Returns the animals position in the food heirarchy.
-     * Animals can eat other animals that are 1 position below them.
+     * Returns the organisms position in the food heirarchy.
+     * Organisms can eat other organisms that are 1 position below them.
      */
     final public int getTrophicLevel()
     {
@@ -55,8 +57,8 @@ public abstract class Organism
     }
 
     /**
-     * Check whether the animal is alive or not.
-     * @return true if the animal is still alive.
+     * Check whether the organism is alive or not.
+     * @return true if the organism is still alive.
      */
     protected boolean isAlive()
     {
@@ -66,14 +68,14 @@ public abstract class Organism
     /**
      * Make this organism act - that is: make it do
      * whatever it wants/needs to do.
-     * @param newOrganisms A list to receive newly born animals.
+     * @param newOrganisms A list to receive newly born organisms.
      * @param weather The weather at the time of acting
      * @param isDayTime True if the current time is day time
      */
     public abstract void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime);
 
     /**
-     * Indicate that the animal is no longer alive.
+     * Indicate that the organism is no longer alive.
      * It is removed from the field.
      */
     protected void setDead()
@@ -87,8 +89,8 @@ public abstract class Organism
     }
 
     /**
-     * Return the animal's location.
-     * @return The animal's location.
+     * Return the organism's location.
+     * @return The organism's location.
      */
     protected Location getLocation()
     {
@@ -96,8 +98,8 @@ public abstract class Organism
     }
 
     /**
-     * Place the animal at the new location in the given field.
-     * @param newLocation The animal's new location.
+     * Place the organism at the new location in the given field.
+     * @param newLocation The organism's new location.
      */
     protected void setLocation(Location newLocation)
     {
@@ -140,16 +142,16 @@ public abstract class Organism
     protected abstract int breed();
 
     /**
-     * Returns an offspring of the animal
-     * @param field The grid for the animal to be placed on
-     * @param location  The position of the animal on the grid
-     * @return New instance of specific animal
+     * Returns an offspring of the organism
+     * @param field The grid for the organism to be placed on
+     * @param location  The position of the organism on the grid
+     * @return New instance of specific organism
      */
     protected abstract Organism returnOffspring(Field field, Location location);
 
     /**
-     * Return the animal's field.
-     * @return The animal's field.
+     * Return the organism's field.
+     * @return The organism's field.
      */
     protected Field getField()
     {
