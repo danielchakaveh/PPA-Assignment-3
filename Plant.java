@@ -11,16 +11,13 @@ public class Plant extends Organism
 {
     public static double creationProbability = 0.3;
     private static final Random rand = Randomizer.getRandom();
-    private static final int maxNewPlants = 6;
-    private static final double breedingProbability = 0.8;
     private static final double chanceOfDeathInDrought = 0.05;
-    private static final double chanceOfDeathInSnow = 0.1;
 
     /**
      * Constructor for objects of class Plant
      */
     public Plant(Field field, Location location){
-        super(field, location, 1);
+        super(field, location, 1, 0.1, 0.8, 6);
         // Location variable refers to 
         // the set location of animals species
     }
@@ -82,7 +79,7 @@ public class Plant extends Organism
     protected int breed() {
         if(rand.nextDouble() <= breedingProbability)
         {
-            return rand.nextInt(maxNewPlants) + 1;
+            return rand.nextInt(maxOffspring) + 1;
         }
         else{
             return 0;

@@ -17,14 +17,8 @@ public abstract class Animal extends Organism
     private int foodLevel;
     // The age at which the animal can first breed
     private int breedingAge;
-    // Minimum maturity age to reproduce.
-    private double breedingProbability;
-    // Maximum number of offspring in a single pregnancy.
-    private int maxLitterSize;
     // The gender of the animal
     private Gender gender;
-    // The chance of animal dying due to snow at any time
-    private double chanceOfDeathInSnow;
 
     private static final Random rand = Randomizer.getRandom();
     // A shared random number generator to control breeding.
@@ -38,18 +32,17 @@ public abstract class Animal extends Organism
      * @param maxAge The age in steps at which the animal dies
      * @param breedingAge The age in steps at which the animal can start breeding
      * @param breedingProbability The probability (as a decimal) of the animal breeding at any step
-     * @param maxLitterSize The most births the animal can have at once
+     * @param maxOffspring The most births the animal can have at once
      * @param trophicLevel The animals position in the food chain
      * @param chanceOfDeathInSnow The chance of animal dying due to snow at any time
      */
     public Animal(boolean randomAge, Field field, Location location, int maxAge,
-    int breedingAge, double breedingProbability, int maxLitterSize, int trophicLevel, double chanceOfDeathInSnow)
+    int breedingAge, double breedingProbability, int maxOffspring, int trophicLevel, double chanceOfDeathInSnow)
     {
-        super(field, location, trophicLevel);
+        super(field, location, trophicLevel, chanceOfDeathInSnow, breedingProbability, maxOffspring);
         this.maxAge = maxAge;
         this.breedingAge = breedingAge;
         this.breedingProbability = breedingProbability;
-        this.maxLitterSize = maxLitterSize;
         this.chanceOfDeathInSnow = chanceOfDeathInSnow;
 
         gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
@@ -186,7 +179,7 @@ public abstract class Animal extends Organism
     {
         int births = 0;
         if(canBreed() && rand.nextDouble() <= breedingProbability) {
-            births = rand.nextInt(maxLitterSize) + 1;
+            births = rand.nextInt(maxOffspring) + 1;
         }
         return births;
     }

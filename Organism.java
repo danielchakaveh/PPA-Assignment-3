@@ -16,20 +16,28 @@ public abstract class Organism
     private Location location;
 
     private int trophicLevel;
+
+    protected double chanceOfDeathInSnow;
+
+    protected double breedingProbability;
+
+    protected int maxOffspring;
     /**
      * Create a new animal at location in field.
-     * 
+     *
      * @param field The field currently occupied.
      * @param location The location within the field.
      * @param trophicLevel The animals position in the food chain
      */
-    public Organism(Field field, Location location, int trophicLevel)
+    public Organism(Field field, Location location, int trophicLevel, double chanceOfDeathInSnow, double breedingProbability, int maxOffspring)
     {
         alive = true;
         this.field = field;
         setLocation(location);
         this.trophicLevel = trophicLevel;
-        
+        this.chanceOfDeathInSnow = chanceOfDeathInSnow;
+        this.breedingProbability = breedingProbability;
+        this.maxOffspring = maxOffspring;
         
         if(field == null || location == null)
         {
