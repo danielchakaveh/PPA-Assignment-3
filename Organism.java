@@ -42,7 +42,7 @@ public abstract class Organism
      */
     public int getFoodValue()
     {
-        return getTrophicLevel() * getTrophicLevel() * 4;
+        return getTrophicLevel() * getTrophicLevel() * 16;
     }
 
     /**

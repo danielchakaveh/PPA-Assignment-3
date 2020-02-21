@@ -14,6 +14,8 @@ public class Simulator
     {
         Simulator simulator = new Simulator();
 
+        System.out.println("Test");
+
         simulator.runLongSimulation();
     }
 
@@ -106,7 +108,7 @@ public class Simulator
     public void simulate(int numSteps){
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            delay(1000);   // uncomment this to run more slowly
+            delay(60);   // uncomment this to run more slowly
         }
     }
 
@@ -179,7 +181,7 @@ public class Simulator
      */
     public void reset()
     {
-        step = 36;
+        step = 0;
         organisms.clear();
         setRandomWeather();
         populate();

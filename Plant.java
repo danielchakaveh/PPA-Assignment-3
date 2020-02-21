@@ -9,10 +9,10 @@ import java.util.Random;
  */
 public class Plant extends Organism
 {
-    public static double creationProbability = 0.1;
+    public static double creationProbability = 0.3;
     private static final Random rand = Randomizer.getRandom();
     private static final int maxNewPlants = 5;
-    private static final double breedingProbability = 0.25;
+    private static final double breedingProbability = 0.4;
     private static final double chanceOfDeathInDrought = 0.1;
     private static final double chanceOfDeathInSnow = 0.15;
 
