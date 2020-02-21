@@ -21,11 +21,11 @@ public class Simulator
 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
-    private static final int DEFAULT_WIDTH = 120;
+    private static final int DEFAULT_WIDTH = 240;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 80;
+    private static final int DEFAULT_DEPTH = 160;
     // The probability of weather changing at any step
-    private static final double weatherChangeProbability = 0.03;
+    private static final double weatherChangeProbability = 0.07;
     // The probability of weather changing at any step
 
     // List of animals in the field.
@@ -108,7 +108,7 @@ public class Simulator
     public void simulate(int numSteps){
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            delay(60);   // uncomment this to run more slowly
+            delay(40);   // uncomment this to run more slowly
         }
     }
 

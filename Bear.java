@@ -17,7 +17,7 @@ public class Bear extends Animal
      * @param location The location within the field.
      */
     public Bear(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 150, 11, 0.23, 3, 4, 0);
+        super(randomAge, field, location, 300, 15, 0.075, 3, 4, 0);
     }
 
     /**

@@ -17,7 +17,7 @@ public class Deer extends Animal
      */
     public Deer(boolean randomAge, Field field, Location location)
     {
-        super(randomAge, field, location, 75, 12, 0.45, 6, 2, 0.02);
+        super(randomAge, field, location, 200, 16, 0.225, 6, 2, 0.02);
     }
 
     /**
