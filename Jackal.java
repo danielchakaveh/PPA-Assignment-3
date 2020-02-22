@@ -7,7 +7,8 @@
  */
 public class Jackal extends Animal
 {
-    public static double creationProbability = 0.05;
+    // Probability of jackal spawning in location upon simulation creation
+    public static final double creationProbability = 0.05;
     /**
      * Create a new rabbit. A rabbit may be created with age
      * zero (a new born) or with a random age.

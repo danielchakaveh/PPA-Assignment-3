@@ -10,10 +10,14 @@ import java.awt.Color;
  */
 public class Simulator
 {
+    /**
+     * Entry point for simulation.
+     * Creates a default simulator and runs it
+     * @param args
+     */
     public static void main(String[] args)
     {
         Simulator simulator = new Simulator();
-
         System.out.println("Test");
 
         simulator.runLongSimulation();

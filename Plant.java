@@ -9,10 +9,11 @@ import java.util.Random;
  */
 public class Plant extends Organism
 {
-    public static double creationProbability = 0.1;
-    private static double randomSpawningProbability = 0.0001;
-    private static final Random rand = Randomizer.getRandom();
+    //Constant probabilities for plants
+    public static final double creationProbability = 0.1;
+    private static final double randomSpawningProbability = 0.0001;
     private static final double chanceOfDeathInDrought = 0.05;
+    private static final Random rand = Randomizer.getRandom();
 
     /**
      * Constructor for objects of class Plant

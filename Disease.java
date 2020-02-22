@@ -51,9 +51,10 @@ public class Disease
         return (randomizer.nextDouble() <= contagiousness);
     }
 
-    private static Disease[] allDiseases = {
+    // List of disease which can be contracted in simulation
+    // To add diseases to simulation, add them here
+    private static final Disease[] allDiseases = {
             new Disease(0.01, 0.7, "Swine Flu"),
-            //new Disease(0.3, 0.006, "Common cold"),
             new Disease(0.9, 0.15, "Ebola")
     };
 

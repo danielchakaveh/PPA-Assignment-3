@@ -7,7 +7,8 @@
  */
 public class Bear extends Animal
 {
-    public static double creationProbability = 0.026;
+    // Probability of bear spawning in location upon simulation creation
+    public static final double creationProbability = 0.026;
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

@@ -10,15 +10,17 @@ import java.util.Random;
  */
 public abstract class Animal extends Organism
 {
-    private int age;
-    // Age of the animal organism.
-    private int maxAge;
-    // The animal's food level, which is increased by eating rabbits.
-    private int foodLevel;
     // The age at which the animal can first breed
-    private int breedingAge;
+    private final int breedingAge;
     // The gender of the animal
-    private Gender gender;
+    private final Gender gender;
+    // The age at which the animal dies of old age
+    private final int maxAge;
+    // Current age of the animal
+    private int age;
+    // The animal's food level, which is increased by animals of lower trophic levels
+    private int foodLevel;
+
 
     private static final Random rand = Randomizer.getRandom();
     // A shared random number generator to control breeding.
@@ -201,8 +203,6 @@ public abstract class Animal extends Organism
      */
     private boolean canEat(Organism organism)
     {
-        return getTrophicLevel() - organism.getTrophicLevel() == 1
-                //|| getTrophicLevel() - organism.getTrophicLevel() == 2
-                ;
+        return getTrophicLevel() - organism.getTrophicLevel() == 1;
     }
 }

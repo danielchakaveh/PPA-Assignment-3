@@ -15,13 +15,13 @@ public abstract class Organism
     // The animal's position in the field.
     private Location location;
     // The level of the organism in the food chain
-    private int trophicLevel;
+    private final int trophicLevel;
     // The chance of an organism dying from snow at any step
     protected double chanceOfDeathInSnow;
     // The chance of 2 breedable organisms breeding at any step
     protected double breedingProbability;
     // The most offspring an organism can create at once
-    protected int maxOffspring;
+    protected final int maxOffspring;
     // The probability of a disease first appearing in this organism
     private double diseaseMutationProbability;
     protected Random rand = Randomizer.getRandom();
@@ -59,7 +59,7 @@ public abstract class Organism
                     if(disease.wouldSpread())
                     {
                         //System.out.println(((Organism)field.getObjectAt(adjacentLocation)).getClass().getName() + " caught " + disease.getName());
-                        ((Organism)field.getObjectAt(adjacentLocation)).giveDisease(disease);
+                        field.getObjectAt(adjacentLocation).giveDisease(disease);
                     }
                 }
             }

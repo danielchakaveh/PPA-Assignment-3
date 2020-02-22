@@ -6,7 +6,8 @@
  */
 public class Deer extends Animal
 {
-    public static double creationProbability = 0.06;
+    // Probability of deer spawning in location upon simulation creation
+    public static final double creationProbability = 0.06;
     /**
      * Create a snake. A snake can be created as a new born (age zero
      * and not hungry) or with a random age and food level.

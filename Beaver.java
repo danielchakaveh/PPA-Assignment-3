@@ -6,7 +6,8 @@
  */
 public class Beaver extends Animal
 {
-    public static double creationProbability = 0.07;
+    // Probability of beaver spawning in location upon simulation creation
+    public static final double creationProbability = 0.07;
     /**
      * Create a Jackal. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
