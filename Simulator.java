@@ -108,7 +108,7 @@ public class Simulator
     public void simulate(int numSteps){
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            delay(40);   // uncomment this to run more slowly
+            //delay(40);   // uncomment this to run more slowly
         }
     }
 
@@ -117,11 +117,9 @@ public class Simulator
      * Iterate over the whole field updating the state of each
      * fox and rabbit.
      */
-    public void simulateOneStep()
-    {
+    public void simulateOneStep() {
         step++;
-        if(rand.nextDouble() <= weatherChangeProbability)
-        {
+        if (rand.nextDouble() <= weatherChangeProbability) {
             setRandomWeather();
         }
 
@@ -129,13 +127,21 @@ public class Simulator
         List<Organism> newAnimals = new ArrayList<>();
         // Let all rabbits act.
 
-        for(Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
+        for (Iterator<Organism> it = organisms.iterator(); it.hasNext(); ) {
             Organism organism = it.next();
-            if(!organism.isAlive()) {
+            if (!organism.isAlive()) {
                 it.remove();
             }
             organism.act(newAnimals, weather, isDayTime(getCurrentHour()));
+        }
 
+        // Randomly spawns plants in empty spaces
+        for (int row = 0; row < field.getDepth(); row++) {
+            for (int col = 0; col < field.getWidth(); col++) {
+                if (field.getObjectAt(row, col) == null && Plant.willSpawn()) {
+                    newAnimals.add(new Plant(field, new Location(row, col)));
+                }
+            }
         }
 
         // Add the newly born foxes and rabbits to the main lists.
