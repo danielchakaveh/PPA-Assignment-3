@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * Class Tiger - Represents a tiger in the simulation
  *
@@ -19,7 +17,7 @@ public class Tiger extends Animal
      */
     public Tiger(boolean randomAge, Field field, Location location)
     {
-        super(false, field, location, 900, 25,0.15, 5, 4, 0.03);
+        super(false, field, location, 900, 25,0.15, 5, 4, 0.03, 0);
     }
 
     public boolean canEat(Organism organism)
