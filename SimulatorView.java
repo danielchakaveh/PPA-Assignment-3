@@ -45,7 +45,7 @@ public class SimulatorView extends JFrame
 
         setTitle("Jungle Simulator");
         timeLabel = new JLabel(getTimeString(0, 0, 0), JLabel.CENTER);
-        infoLabel = new JLabel("", JLabel.CENTER);
+        infoLabel = new JLabel(" ", JLabel.CENTER);
         weatherLabel = new JLabel(WEATHER_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
