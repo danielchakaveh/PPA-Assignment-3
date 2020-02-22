@@ -45,9 +45,9 @@ public abstract class Organism
         setLocation(location);
         this.trophicLevel = trophicLevel;
         this.chanceOfDeathInSnow = chanceOfDeathInSnow;
-        this.breedingProbability = breedingProbability;
+        this.breedingProbability = breedingProbability * 1.25;
         this.maxOffspring = maxOffspring;
-        this.diseaseMutationProbability = diseaseMutationProbability;
+        this.diseaseMutationProbability = diseaseMutationProbability * 2;
     }
 
     protected void spreadDiseases()
