@@ -26,7 +26,7 @@ public abstract class Organism
     private double diseaseMutationProbability;
     protected Random rand = Randomizer.getRandom();
     // The diseases an organism has
-    private Set<Disease> diseases = new HashSet<Disease>();
+    private Set<Disease> diseases = new HashSet<>();
 
     /**
      * Create a new animal at location in field.
@@ -108,7 +108,7 @@ public abstract class Organism
     }
 
     /**
-     * Returns the animals position in the food heirarchy.
+     * Returns the animals position in the food hierarchy.
      * Animals can eat other animals that are 1 position below them.
      */
     final public int getTrophicLevel()
@@ -181,7 +181,7 @@ public abstract class Organism
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
-        List<Location> free = new ArrayList<>();
+        List<Location> free;
 
         free = field.getFreeAdjacentLocations(getLocation());
 

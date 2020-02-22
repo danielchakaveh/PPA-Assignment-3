@@ -28,7 +28,7 @@ public class Plant extends Organism
      *  May give birth or may not
      * @param newOrganisms A list to receive newly born animals.
      * @param weather The current weather
-     * @param isDayTime
+     * @param isDayTime True if the current time is day time
      */
 	@Override
     public void act(List<Organism> newOrganisms, Weather weather, boolean isDayTime)

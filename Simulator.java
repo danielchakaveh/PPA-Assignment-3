@@ -13,7 +13,7 @@ public class Simulator
     /**
      * Entry point for simulation.
      * Creates a default simulator and runs it
-     * @param args
+     * @param args Any array of strings - they do not affect this method
      */
     public static void main(String[] args)
     {
@@ -162,7 +162,7 @@ public class Simulator
     }
 
     /**
-     * Calcualate the current hour.
+     * Calculate the current hour.
      */
     public int getCurrentHour()
     {

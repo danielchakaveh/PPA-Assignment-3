@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.util.HashMap;
 
 /**
@@ -33,7 +32,7 @@ public class FieldStats
      */
     public String getPopulationDetails(Field field)
     {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         if(!countsValid) {
             generateCounts(field);
         }

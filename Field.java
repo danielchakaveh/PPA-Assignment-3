@@ -1,5 +1,4 @@
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -170,7 +169,6 @@ public class Field
         assert location != null : "Null location passed to adjacentLocations";
         // The list of locations to be returned.
         List<Location> locations = new LinkedList<>();
-        if(location != null) {
             int row = location.getRow();
             int col = location.getCol();
             for(int roffset = -1; roffset <= 1; roffset++) {
@@ -189,7 +187,6 @@ public class Field
             // Shuffle the list. Several other methods rely on the list
             // being in a random order.
             Collections.shuffle(locations, rand);
-        }
         return locations;
     }
 

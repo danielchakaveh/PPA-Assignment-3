@@ -125,13 +125,13 @@ public abstract class Animal extends Organism
     {
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
+
+        // Loops through adjacent locations checking for prey to eat, and eats them if they exist
+        for (Location where : adjacent) {
             Organism organism = field.getObjectAt(where);
-            if(!(organism == null) && canEat(organism)) {
+            if (!(organism == null) && canEat(organism)) {
                 // Eat organism
-                if(organism.isAlive()) {
+                if (organism.isAlive()) {
                     organism.setDead();
                     foodLevel += organism.getFoodValue();
                     return where;
@@ -161,14 +161,6 @@ public abstract class Animal extends Organism
         if(foodLevel <= 0) {
             setDead();
         }
-    }
-
-    /**
-     * Assigns a random age to the current animal
-     */
-    public void setRandomAge()
-    {
-        age = rand.nextInt(maxAge);
     }
 
     /**
