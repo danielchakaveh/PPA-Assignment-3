@@ -102,7 +102,7 @@ public class FieldStats
                 nonZero++;
             }
         }
-        return nonZero > 4;
+        return nonZero > 1;
     }
     
     /**

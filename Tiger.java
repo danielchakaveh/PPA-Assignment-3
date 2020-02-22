@@ -6,7 +6,9 @@
  */
 public class Tiger extends Animal
 {
-    public static double creationProbability = 0.009;
+    public static double creationProbability = 0.02;
+
+
     /**
      * Create a tiger. A tiger can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -17,7 +19,7 @@ public class Tiger extends Animal
      */
     public Tiger(boolean randomAge, Field field, Location location)
     {
-        super(false, field, location, 900, 17,0.37, 5, 4, 0.2, 0.001);
+        super(false, field, location, 900, 26,0.35, 5, 4, 0.1, 0.001);
     }
 
     public boolean canEat(Organism organism)

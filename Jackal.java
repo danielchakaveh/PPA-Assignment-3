@@ -17,7 +17,7 @@ public class Jackal extends Animal
      * @param location The location within the field.
      */
     public Jackal(boolean randomAge, Field field, Location location) {
-        super(randomAge, field, location, 200, 20, 0.4, 5, 3, 0.05, 0.0001);
+        super(randomAge, field, location, 200, 13, 0.5, 5, 3, 0.05, 0.0001);
     }
         @Override
         protected Animal returnOffspring(Field field, Location location) {

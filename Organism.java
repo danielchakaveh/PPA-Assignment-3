@@ -58,7 +58,7 @@ public abstract class Organism
                 for (Disease disease: diseases) {
                     if(disease.wouldSpread())
                     {
-                        System.out.println(((Organism)field.getObjectAt(adjacentLocation)).getClass().getName() + " caught " + disease.getName());
+                        //System.out.println(((Organism)field.getObjectAt(adjacentLocation)).getClass().getName() + " caught " + disease.getName());
                         ((Organism)field.getObjectAt(adjacentLocation)).giveDisease(disease);
                     }
                 }
@@ -85,7 +85,7 @@ public abstract class Organism
         {
             Disease contractedDisease = Disease.getRandomDisease();
             giveDisease(contractedDisease);
-            System.out.println(this.getClass().getName() + " has contracted " + contractedDisease.getName());
+            //System.out.println(this.getClass().getName() + " has contracted " + contractedDisease.getName());
         }
     }
 

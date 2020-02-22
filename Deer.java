@@ -6,7 +6,7 @@
  */
 public class Deer extends Animal
 {
-    public static double creationProbability = 0.2;
+    public static double creationProbability = 0.06;
     /**
      * Create a snake. A snake can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -17,7 +17,7 @@ public class Deer extends Animal
      */
     public Deer(boolean randomAge, Field field, Location location)
     {
-        super(randomAge, field, location, 200, 16, 0.1, 6, 2, 0.02, 0.0001);
+        super(randomAge, field, location, 200, 17, 0.23, 6, 2, 0.02, 0.0001);
     }
 
     /**

@@ -19,6 +19,11 @@ public abstract class Animal extends Organism
     private int breedingAge;
     // The gender of the animal
     private Gender gender;
+    public static int deathBySnow = 0;
+    public static int deathByOverCrowding = 0;
+    public static int deathByEatingOverCrowding = 0;
+    public static int deathByOverHunger = 0;
+    public static int deathByOverOldAge = 0;
 
     private static final Random rand = Randomizer.getRandom();
     // A shared random number generator to control breeding.
@@ -39,9 +44,9 @@ public abstract class Animal extends Organism
     public Animal(boolean randomAge, Field field, Location location, int maxAge,
                   int breedingAge, double breedingProbability, int maxOffspring, int trophicLevel, double chanceOfDeathInSnow, double diseaseMutationProbability)
     {
-        super(field, location, trophicLevel, chanceOfDeathInSnow, breedingProbability, maxOffspring, diseaseMutationProbability);
+        super(field, location, trophicLevel, chanceOfDeathInSnow, breedingProbability, maxOffspring, diseaseMutationProbability * 3);
         this.maxAge = maxAge;
-        this.breedingAge = breedingAge;
+        this.breedingAge = breedingAge / 2;
 
         gender = rand.nextBoolean() ? Gender.MALE : Gender.FEMALE;
         // Animal has a 50% chance of being male or female
@@ -128,7 +133,8 @@ public abstract class Animal extends Organism
             Location where = it.next();
             Organism organism = field.getObjectAt(where);
             if(!(organism == null) && canEat(organism)) {
-                if(organism.isAlive()) { 
+                // Eat organism
+                if(organism.isAlive()) {
                     organism.setDead();
                     foodLevel += organism.getFoodValue();
                     return where;

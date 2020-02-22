@@ -29,7 +29,6 @@ public class Disease
     {
         if(randomizer.nextDouble() <= mortalityRate)
         {
-            System.out.println(infected.getClass().getName() + " killed by disease");
             infected.setDead();
         }
     }
@@ -56,7 +55,7 @@ public class Disease
             new Disease(0.01, 0.7, "Swine Flu"),
             //new Disease(0.1, 0.04, "Corona"),
             //new Disease(0.3, 0.006, "Common cold"),
-            new Disease(0.8, 0.1, "Ebola")
+            new Disease(0.9, 0.1, "Ebola")
     };
 
     private static Random randomizer = Randomizer.getRandom();
