@@ -29,7 +29,7 @@ public class Disease
     {
         if(randomizer.nextDouble() <= mortalityRate)
         {
-            System.out.println(infected.getClass().getName() + " killed by disease");
+            //System.out.println(infected.getClass().getName() + " killed by disease");
             infected.setDead();
         }
     }

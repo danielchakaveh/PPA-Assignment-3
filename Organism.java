@@ -82,7 +82,9 @@ public abstract class Organism
     {
         if(rand.nextDouble() <= diseaseMutationProbability)
         {
-            giveDisease(Disease.getRandomDisease());
+            Disease contractedDisease = Disease.getRandomDisease();
+            giveDisease(contractedDisease);
+            System.out.println(this.getClass().getName() + " has contracted " + contractedDisease.getName());
         }
     }
 
