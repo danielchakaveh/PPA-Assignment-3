@@ -10,6 +10,7 @@ import java.util.Random;
 public class Plant extends Organism
 {
     public static double creationProbability = 0.3;
+    private static double randomSpawningProbability = 0.0005;
     private static final Random rand = Randomizer.getRandom();
     private static final double chanceOfDeathInDrought = 0.05;
 
@@ -51,6 +52,15 @@ public class Plant extends Organism
             mightDieInSnow();
         }
 	}
+
+    /**
+     * Calculates randomly whether or not a plant will spawn for a given spot
+     * @return whether or not a plant will spawn for a given spot
+     */
+	public static boolean willSpawn()
+    {
+        return rand.nextDouble() <= randomSpawningProbability;
+    }
 
     /**
      * A plant may die
