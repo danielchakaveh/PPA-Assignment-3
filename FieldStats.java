@@ -15,8 +15,6 @@ public class FieldStats
     private HashMap<Class, Counter> counters;
     // Whether the counters are currently up to date.
     private boolean countsValid;
-    //
-    private SimulatorView animal;
 
     /**
      * Construct a FieldStats object.
