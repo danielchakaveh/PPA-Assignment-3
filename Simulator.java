@@ -144,9 +144,9 @@ public class Simulator
             }
         }
 
-            // Add the newly born foxes and rabbits to the main lists.
-            organisms.addAll(newAnimals);
-            view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute(), weather);
+        // Add the newly born foxes and rabbits to the main lists.
+        organisms.addAll(newAnimals);
+        view.showStatus(field, getCurrentDay(), getCurrentHour(), getCurrentMinute(), weather);
     }
 
     /**

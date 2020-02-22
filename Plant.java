@@ -18,7 +18,7 @@ public class Plant extends Organism
      * Constructor for objects of class Plant
      */
     public Plant(Field field, Location location){
-        super(field, location, 1, 0.1, 0.9, 6, 0);
+        super(field, location, 1, 0.1, 0.9, 6, 0.0001);
         // Location variable refers to 
         // the set location of animals species
     }
@@ -35,6 +35,7 @@ public class Plant extends Organism
         if(!isAlive())
             return; //Does not do anything if plant is dead
 
+        spreadDiseases();
         affectByDiseases();
         mutateNewDisease();
 

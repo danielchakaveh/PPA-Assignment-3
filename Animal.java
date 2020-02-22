@@ -83,6 +83,7 @@ public abstract class Animal extends Organism
             }
             else {
                 giveBirth(newOrganisms);
+                spreadDiseases();
                 affectByDiseases();
                 mutateNewDisease();
                 if(!isAlive())
@@ -199,7 +200,8 @@ public abstract class Animal extends Organism
      */
     private boolean canEat(Organism organism)
     {
-        return getTrophicLevel() - organism.getTrophicLevel() == 1 ||
-                getTrophicLevel() - organism.getTrophicLevel() == 2;
+        return getTrophicLevel() - organism.getTrophicLevel() == 1
+                //|| getTrophicLevel() - organism.getTrophicLevel() == 2
+                ;
     }
 }

@@ -53,11 +53,12 @@ public abstract class Organism
     protected void spreadDiseases()
     {
         for (Location adjacentLocation: field.adjacentLocations(location)) {
-            if(field.getObjectAt(adjacentLocation).getClass() == getClass())    //disease only spreads between organisms of same species
+            if(field.getObjectAt(adjacentLocation) != null && field.getObjectAt(adjacentLocation).getClass() == getClass())    //disease only spreads between organisms of same species
             {
                 for (Disease disease: diseases) {
                     if(disease.wouldSpread())
                     {
+                        System.out.println(((Organism)field.getObjectAt(adjacentLocation)).getClass().getName() + " caught " + disease.getName());
                         ((Organism)field.getObjectAt(adjacentLocation)).giveDisease(disease);
                     }
                 }
