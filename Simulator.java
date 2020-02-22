@@ -78,8 +78,8 @@ public class Simulator
         view.setColor(Deer.class, Color.RED);
 		// Orange-brown
         view.setColor(Tiger.class, new Color(255, 153, 0));
-		// Brown
-        view.setColor(Beaver.class, Color.getHSBColor(204, 102, 0));
+		// Blue
+        view.setColor(Beaver.class,new Color(60, 80, 160));
         view.setColor(Plant.class, Color.GREEN);
 
         // Setup a valid starting point.
