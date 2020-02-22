@@ -127,10 +127,12 @@ public class SimulatorView extends JFrame
 		if(currentColour == NIGHT_COLOR) {
 		population.setForeground(Color.WHITE);
 		infoPane.setForeground(Color.WHITE);
+		getContentPane().setBackground(Color.WHITE);
 		}
 		else {
-		population.setForeground(Color.BLACK);
-		infoPane.setForeground(Color.BLACK);
+		population.setForeground(Color.DARK_GRAY);
+		infoPane.setForeground(Color.DARK_GRAY);
+		getContentPane().setBackground(Color.DARK_GRAY);
 		}
 
         for(int row = 0; row < field.getDepth(); row++) {
