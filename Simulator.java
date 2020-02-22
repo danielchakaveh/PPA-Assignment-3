@@ -38,7 +38,7 @@ public class Simulator
     private SimulatorView view;
     // The current weather in the simulation
     private Weather weather;
-    // Randomizer to allow for randomness in simulation
+    // Randomiser to allow for randomness in simulation
     private Random rand = Randomizer.getRandom();
 
     /**

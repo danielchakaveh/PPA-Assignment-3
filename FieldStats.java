@@ -11,10 +11,12 @@ import java.util.HashMap;
  */
 public class FieldStats
 {
-    // Counters for each type of entity (fox, rabbit, etc.) in the simulation.
+    // Counters for each type of entity (bear, tiger, etc.) in the simulation.
     private HashMap<Class, Counter> counters;
     // Whether the counters are currently up to date.
     private boolean countsValid;
+    //
+    private SimulatorView animal;
 
     /**
      * Construct a FieldStats object.

@@ -23,6 +23,7 @@ public class SimulatorView extends JFrame
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.MAGENTA;
     private final String POPULATION_PREFIX = "Population: ";
+    private final String WEATHER_PREFIX = "WEATHER CONDITION: ";
     private JLabel timeLabel, population, infoLabel, weatherLabel;
     private FieldView fieldView;
     private JPanel infoPane;
@@ -44,8 +45,8 @@ public class SimulatorView extends JFrame
 
         setTitle("Jungle Simulator");
         timeLabel = new JLabel(getTimeString(0, 0, 0), JLabel.CENTER);
-        infoLabel = new JLabel("  ", JLabel.CENTER);
-        weatherLabel = new JLabel("", JLabel.CENTER);
+        infoLabel = new JLabel("", JLabel.CENTER);
+        weatherLabel = new JLabel(WEATHER_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
         
@@ -113,7 +114,7 @@ public class SimulatorView extends JFrame
         }
 
         timeLabel.setText(getTimeString(days, hours, minutes));
-        weatherLabel.setText(weather.toString());
+        weatherLabel.setText(WEATHER_PREFIX + weather.toString());
         stats.reset();
         
         fieldView.preparePaint();
@@ -191,7 +192,7 @@ public class SimulatorView extends JFrame
      */
     private class FieldView extends JPanel
     {
-        private final int GRID_VIEW_SCALING_FACTOR = 6;
+        private final int GRID_VIEW_SCALING_FACTOR = 7;
 
         private int gridWidth, gridHeight;
         private int xScale, yScale;
